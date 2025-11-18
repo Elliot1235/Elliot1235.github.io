@@ -3,7 +3,7 @@ import { RolePanels } from "@/components/RolePanels";
 export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-soft-green px-4 py-10">
-      <div className="w-full max-w-5xl rounded-3xl bg-white/40 p-8 shadow-lg backdrop-blur-md md:p-10">
+      <div className="w-full max-w-5xl rounded-3xl bg-white p-8 shadow-2xl md:p-10">
         <header className="text-center">
           <p className="text-sm font-medium text-slate-700">
             Hey, my name is
