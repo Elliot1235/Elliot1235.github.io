@@ -6,12 +6,16 @@ import { roles } from "@/data/roles";
 import { ExperienceCard } from "./ExperienceCard";
 
 export function RolePanels() {
-  const [activeIndex, setActiveIndex] = useState(1);
+  // Only keep the Product Manager panel visible on the page.
+  const productManagerOnly = roles.filter(
+    (role) => role.role === "Product Manager"
+  );
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <div className="mt-10 flex w-full justify-center">
       <div className="flex w-[80vw] max-w-6xl gap-6">
-        {roles.map((role, index) => {
+        {productManagerOnly.map((role, index) => {
           const isActive = index === activeIndex;
           return (
             <motion.div
