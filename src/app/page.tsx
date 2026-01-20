@@ -3,12 +3,12 @@ import { GradientBackgroundCanvas } from "@/components/GradientBackgroundCanvas"
 
 export default function HomePage() {
   return (
-    <main className="bg-[#BAD3D8]">
+    <main className="relative">
       {/* Fullscreen canvas background (sits behind all content). */}
       <GradientBackgroundCanvas />
 
       {/* Hero (fullscreen). */}
-      <section className="flex min-h-screen flex-col items-center justify-center px-4 py-12 text-center">
+      <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-12 text-center">
         <p className="text-sm font-medium text-slate-800/80">
           Hey, my name is
         </p>
@@ -28,7 +28,7 @@ export default function HomePage() {
       </section>
 
       {/* Experiences (scroll down). */}
-      <section className="px-4 pb-16">
+      <section className="relative z-10 px-4 pb-16">
         <RolePanels />
       </section>
     </main>

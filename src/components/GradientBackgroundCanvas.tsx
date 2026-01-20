@@ -17,12 +17,14 @@ export function GradientBackgroundCanvas() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 -z-10"
+      // Use non-negative z-index so the canvas isn't placed behind the body background.
+      className="pointer-events-none fixed inset-0 z-0"
       aria-hidden="true"
     >
       <canvas
         ref={canvasRef}
-        className="h-full w-full opacity-60"
+        // Slightly higher opacity so the effect is visible but still subtle.
+        className="h-full w-full opacity-80"
       />
     </div>
   );
