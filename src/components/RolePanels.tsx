@@ -14,7 +14,7 @@ export function RolePanels() {
 
   return (
     <div className="mt-10 flex w-full justify-center">
-      <div className="flex w-[80vw] max-w-6xl gap-6">
+      <div className="flex w-[80vw] max-w-4xl gap-6">
         {productManagerOnly.map((role, index) => {
           const isActive = index === activeIndex;
           return (
@@ -39,12 +39,9 @@ export function RolePanels() {
               transition={{ type: "spring", stiffness: 260, damping: 30 }}
             >
               <div className="paper-card flex h-full w-full flex-col border border-[#F3D7A2]/70 p-6 text-left">
-                <h2 className="text-lg font-semibold text-slate-900">
-                  {role.intro.split(".")[0]}.
+                <h2 className="text-xl font-semibold text-slate-900">
+                  Experience
                 </h2>
-                <p className="mt-1 text-sm text-slate-700">
-                  {role.intro.replace(`${role.intro.split(".")[0]}.`, "").trim()}
-                </p>
 
                 <div className="mt-4 flex-1 space-y-3">
                   {role.experiences.map((exp) => (
