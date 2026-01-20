@@ -14,7 +14,7 @@ export const roles: Role[] = [
   {
     role: "Software Engineer",
     intro:
-      "I am a Software Engineer. I’m not a nerd software engineer, communication and creativity is playing a huge role in project, of course and the AI.",
+      "I'm a Software Engineer. I’m not a nerd software engineer, communication and creativity is playing a huge role in project, of course and the AI.",
     experiences: [
       {
         title: "Shipped AI-powered features from prototype to production.",

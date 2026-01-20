@@ -12,9 +12,9 @@ export function ExperienceCard({ experience }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="rounded-2xl bg-white/70 p-4 shadow-sm flex gap-4">
+    <div className="flex w-full gap-4 rounded-2xl bg-white/70 p-4 shadow-sm">
       <div className="h-16 w-16 flex-shrink-0 rounded-xl bg-gradient-to-br from-emerald-200 to-emerald-400" />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-slate-900">
           {experience.title}
         </p>
@@ -33,7 +33,7 @@ export function ExperienceCard({ experience }: Props) {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="overflow-hidden"
+              className="overflow-hidden w-full"
             >
               <p className="mt-2 text-sm text-slate-700">
                 {experience.details}

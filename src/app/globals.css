@@ -3,7 +3,44 @@
 @tailwind utilities;
 
 body {
-  @apply bg-soft-green text-slate-900 antialiased;
+  @apply bg-[#BAD3D8] text-slate-900 antialiased;
+}
+
+.paper-card {
+  position: relative;
+  background: #fff3d9;
+  border-radius: 32px;
+  box-shadow: 0 25px 50px rgba(15, 23, 42, 0.15);
+  clip-path: polygon(
+    0% 6%,
+    2% 0%,
+    98% 0%,
+    100% 6%,
+    100% 94%,
+    98% 100%,
+    2% 100%,
+    0% 94%
+  );
+}
+
+.paper-card::before,
+.paper-card::after {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 80px;
+  background: #bad3d8;
+  top: -8px;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.paper-card::before {
+  left: 18px;
+}
+
+.paper-card::after {
+  right: 18px;
 }
 
 
