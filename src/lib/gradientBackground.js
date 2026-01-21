@@ -45,14 +45,27 @@ function hslToRgb(h, s, l) {
 }
 
 function makePalette() {
-  // Harmonious palette: analogous hues around a base hue with gentle saturation.
-  const baseHue = Math.random() * 360;
-  const offsets = [-22, 0, 18, 42];
-  const hues = offsets.map((o) => baseHue + o);
-  // Higher saturation and wider lightness spread to avoid flat-looking fills.
-  const sat = lerp(0.45, 0.7, Math.random());
-  const lights = [0.22, 0.36, 0.54, 0.78].map((l) => l + (Math.random() - 0.5) * 0.06);
-  return hues.map((h, i) => hslToRgb(h, sat, clamp01(lights[i])));
+  // Deterministic palette tuned to Pantone 11-4201 (Cloud Dancer).
+  // CMYK(0,1,3,6) ≈ RGB(240,237,233) -> base color
+  const base = [240, 237, 233];
+
+  function mix(a, b, t) {
+    return [
+      Math.round(lerp(a[0], b[0], t)),
+      Math.round(lerp(a[1], b[1], t)),
+      Math.round(lerp(a[2], b[2], t))
+    ];
+  }
+
+  const lighter = [255, 255, 255];
+  const darker = [30, 30, 30];
+
+  return [
+    mix(base, darker, 0.18),
+    mix(base, lighter, 0.06),
+    mix(base, lighter, 0.18),
+    mix(base, lighter, 0.35)
+  ];
 }
 
 function mulberry32(seed) {
@@ -130,7 +143,7 @@ export function initGradientBackground(canvas) {
   const offCtx = offscreen.getContext("2d", { alpha: false });
   if (!offCtx) return () => {};
 
-  const seed = (Math.random() * 1e9) | 0;
+  const seed = 123456789;
   const noise2D = makeValueNoise(seed);
   const palette = makePalette();
 
