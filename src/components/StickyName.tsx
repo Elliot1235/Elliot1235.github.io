@@ -15,8 +15,8 @@ export default function StickyName({ children, className = "" }: { children: Rea
   const [scale, setScale] = useState(1);
   const [isPinned, setIsPinned] = useState(false);
   const [placeholderHeight, setPlaceholderHeight] = useState(0);
-  const minScale = 0.62; // final scale when pinned
-  const stickyTop = 12; // px from top when pinned
+  const minScale = 0.4; // final scale when pinned (60% smaller => 40% size)
+  const stickyTop = 16; // px from top when pinned (16px padding from edge)
 
   useEffect(() => {
     const el = ref.current;
@@ -25,7 +25,8 @@ export default function StickyName({ children, className = "" }: { children: Rea
     // measure element height and top relative to document
     const rect = el.getBoundingClientRect();
     const elementTop = rect.top + window.scrollY;
-    setPlaceholderHeight(rect.height);
+    // reserve an extra 32px below the name when pinned so content doesn't touch it
+    setPlaceholderHeight(rect.height + 32);
     const denom = Math.max(elementTop - stickyTop, 1);
 
     let ticking = false;
@@ -40,7 +41,15 @@ export default function StickyName({ children, className = "" }: { children: Rea
         const s = 1 - p * (1 - minScale);
         setScale(s);
         // consider pinned when progress reaches 1 (allow tiny epsilon)
-        setIsPinned(p >= 0.999);
+        const pinned = p >= 0.999;
+        setIsPinned(pinned);
+        // expose a hero fade value: lines should disappear as p -> 1
+        try {
+          document.documentElement.style.setProperty("--hero-text-opacity", String(Math.max(0, 1 - p)));
+          document.documentElement.style.setProperty("--hero-content-opacity", String(Math.max(0, 1 - p)));
+        } catch (e) {
+          // ignore on server
+        }
         ticking = false;
       });
     }
@@ -63,11 +72,11 @@ export default function StickyName({ children, className = "" }: { children: Rea
       {isPinned && <div style={{ height: placeholderHeight }} aria-hidden />}
 
       <div
-        style={isPinned ? { position: "fixed", top: 0, left: 0, width: "100%", zIndex: 60 } : {}}
+        style={isPinned ? { position: "fixed", top: `${stickyTop}px`, left: 0, width: "100%", zIndex: 9999 } : {}}
         className="w-full flex justify-center"
       >
         <div
-          style={isPinned ? { padding: "8px 0", width: "100%", display: "flex", justifyContent: "center", background: "rgba(255,255,255,0.6)", backdropFilter: "blur(6px)" } : {}}
+          style={isPinned ? { padding: "8px 0", width: "100%", display: "flex", justifyContent: "center", background: "transparent" } : {}}
         >
           <h1
             ref={ref}

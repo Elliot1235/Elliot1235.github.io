@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 
 /*
   AnimatedSvgBackground
@@ -84,6 +84,36 @@ export function AnimatedSvgBackground({ layers = NUM_LAYERS }: { layers?: number
       return { id: `g-${i}`, colors, cx, cy, r, opacity, duration, tx, ty, scale, rotate };
     });
   }, [layers]);
+
+  // Expose a chosen accent color to the rest of the page via a CSS custom property.
+  useEffect(() => {
+    const accent = layerData?.[0]?.colors?.[0] || PALETTE[0];
+    // utility: darken a hex color by percent (0..1)
+    function darkenHex(hex, pct) {
+      try {
+        let h = hex.replace(/^#/, "");
+        if (h.length === 3) h = h.split("").map((c) => c + c).join("");
+        const num = parseInt(h, 16);
+        let r = (num >> 16) & 0xff;
+        let g = (num >> 8) & 0xff;
+        let b = num & 0xff;
+        r = Math.max(0, Math.min(255, Math.round(r * (1 - pct))));
+        g = Math.max(0, Math.min(255, Math.round(g * (1 - pct))));
+        b = Math.max(0, Math.min(255, Math.round(b * (1 - pct))));
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+      } catch (e) {
+        return hex;
+      }
+    }
+
+    try {
+      document.documentElement.style.setProperty("--accent-color", accent);
+      const darker = darkenHex(accent, 0.18); // ~18% darker for readability
+      document.documentElement.style.setProperty("--accent-color-dark", darker);
+    } catch (e) {
+      // ignore on server or if unavailable
+    }
+  }, [layerData]);
 
   // Create CSS keyframes for each layer. We inline the stylesheet so durations
   // and deltas differ per-layer and are generated at runtime.
