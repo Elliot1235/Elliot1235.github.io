@@ -24,7 +24,7 @@ export default function HomePage() {
             I am a product manager who balances user needs with delivery.
           </p>
           <p className="mt-6">
-            My goal is to design products that feel invisible to users, where the
+            My goal is to design products that feel pleasant to users, where the
             experience is frictionless and intuitive across both software and hardware.
           </p>
         </div>
