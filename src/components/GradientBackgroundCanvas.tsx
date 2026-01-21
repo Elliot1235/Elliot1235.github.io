@@ -23,8 +23,8 @@ export function GradientBackgroundCanvas() {
     >
       <canvas
         ref={canvasRef}
-        // Slightly higher opacity so the effect is visible but still subtle.
-        className="h-full w-full opacity-80"
+        // Full opacity so the procedural gradient isn't washed out by the body background.
+        className="h-full w-full"
       />
     </div>
   );
