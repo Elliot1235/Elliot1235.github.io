@@ -1,5 +1,6 @@
 import { RolePanels } from "@/components/RolePanels";
 import AnimatedSvgBackground from "@/components/AnimatedSvgBackground";
+import StickyName from "@/components/StickyName";
 
 export default function HomePage() {
   return (
@@ -12,9 +13,11 @@ export default function HomePage() {
         <p className="text-lg font-medium text-slate-800/90 md:text-2xl">
           Hey, my name is
         </p>
-        <h1 className="mt-3 text-5xl font-semibold tracking-tight text-slate-900 md:text-7xl">
-          Elliot Luo
-        </h1>
+        <div className="mt-6">{/* extra spacing between intro and name */}
+          <StickyName className="text-5xl font-semibold tracking-tight text-slate-900 md:text-7xl">
+            Elliot Luo
+          </StickyName>
+        </div>
 
         <div className="mt-16 max-w-5xl text-xl leading-relaxed text-slate-900 md:text-2xl">
           <p>
