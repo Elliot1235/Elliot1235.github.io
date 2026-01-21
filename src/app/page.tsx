@@ -1,6 +1,8 @@
 import { RolePanels } from "@/components/RolePanels";
-import AnimatedSvgBackground from "@/components/AnimatedSvgBackground";
-import StickyName from "@/components/StickyName";
+import dynamic from "next/dynamic";
+
+const AnimatedSvgBackground = dynamic(() => import("@/components/AnimatedSvgBackground"), { ssr: false });
+const StickyName = dynamic(() => import("@/components/StickyName"), { ssr: false });
 
 export default function HomePage() {
   return (

@@ -13,6 +13,8 @@ import { useEffect, useRef, useState } from "react";
 export default function StickyName({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLHeadingElement | null>(null);
   const [scale, setScale] = useState(1);
+  const [isPinned, setIsPinned] = useState(false);
+  const [placeholderHeight, setPlaceholderHeight] = useState(0);
   const minScale = 0.62; // final scale when pinned
   const stickyTop = 12; // px from top when pinned
 
