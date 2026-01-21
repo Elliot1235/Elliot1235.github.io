@@ -3,7 +3,7 @@ import { GradientBackgroundCanvas } from "@/components/GradientBackgroundCanvas"
 
 export default function HomePage() {
   return (
-    <main className="relative">
+    <main className="relative min-h-screen overflow-hidden">
       {/* Fullscreen canvas background (sits behind all content). */}
       <GradientBackgroundCanvas />
 
