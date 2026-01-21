@@ -14,23 +14,23 @@ import { useMemo } from "react";
 */
 
 const PALETTE = [
-  // Strict palette (approximated hex values for the named Pantone swatches)
+  // Slightly stronger / more visible approximations of the allowed Pantone colors
   // Pantone 11-0515 Lemon Icing
-  "#FBF6D6",
+  "#FFF7A3",
   // Pantone 13-4108 Nimbus Cloud
-  "#D7DEE6",
+  "#BFC9D3",
   // Pantone 11-1400 Raindrops on Roses
-  "#F4DDE0",
+  "#F8C9CC",
   // Pantone 11-4201 Cloud Dancer
   "#F0EDE9",
   // Pantone 13-4306 Ice Melt
-  "#E6F0F2",
+  "#CFEFF4",
   // Pantone 12-1107 Peach Dust
-  "#F6E3D7",
+  "#F6D1C2",
   // Pantone 13-6006 Almost Aqua
-  "#DFF5F3",
+  "#C6F0EC",
   // Pantone 13-3802 Orchid Tint
-  "#EFE6F2"
+  "#E9DFF5"
 ];
 
 // Constants you can tweak

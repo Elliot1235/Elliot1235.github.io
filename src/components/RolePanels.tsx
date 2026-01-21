@@ -14,7 +14,7 @@ export function RolePanels() {
 
   return (
     <div className="mt-10 flex w-full justify-center">
-      <div className="flex w-[80vw] max-w-4xl gap-6">
+      <div className="flex w-[85vw] max-w-5xl gap-6">
         {productManagerOnly.map((role, index) => {
           const isActive = index === activeIndex;
           return (
@@ -38,9 +38,9 @@ export function RolePanels() {
               }}
               transition={{ type: "spring", stiffness: 260, damping: 30 }}
             >
-              <div className="paper-card flex h-full w-full flex-col border border-[#F3D7A2]/70 p-6 text-left">
+              <div className="paper-card flex h-full w-full flex-col border border-[#F3D7A2]/40 p-6 text-left">
                 <h2 className="text-xl font-semibold text-slate-900">
-                  Experience
+                  My experience
                 </h2>
 
                 <div className="mt-4 flex-1 space-y-3">

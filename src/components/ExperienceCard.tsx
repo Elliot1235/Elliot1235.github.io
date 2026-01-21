@@ -12,7 +12,7 @@ export function ExperienceCard({ experience }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex w-full gap-4 rounded-2xl bg-white/70 p-4 shadow-sm">
+    <div className="flex w-full gap-4 rounded-2xl bg-white/10 backdrop-blur-sm p-4 shadow-sm">
       <div className="h-16 w-16 flex-shrink-0 rounded-xl bg-gradient-to-br from-emerald-200 to-emerald-400" />
       <div className="flex-1 min-w-0">
         <p className="text-sm font-medium text-slate-900">

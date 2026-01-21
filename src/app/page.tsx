@@ -9,10 +9,10 @@ export default function HomePage() {
 
       {/* Hero (fullscreen). */}
       <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-12 text-center">
-        <p className="text-sm font-medium text-slate-800/80">
+        <p className="text-lg font-medium text-slate-800/90 md:text-2xl">
           Hey, my name is
         </p>
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-900 md:text-6xl">
+        <h1 className="mt-3 text-5xl font-semibold tracking-tight text-slate-900 md:text-7xl">
           Elliot Luo
         </h1>
 
