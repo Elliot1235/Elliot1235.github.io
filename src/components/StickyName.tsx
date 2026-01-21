@@ -20,11 +20,10 @@ export default function StickyName({ children, className = "" }: { children: Rea
     const el = ref.current;
     if (!el) return;
 
-    let initialTop = el.getBoundingClientRect().top;
-    // If initialTop is too close to top (rare during SSR/hydration), recompute after a tick.
-    requestAnimationFrame(() => {
-      initialTop = el.getBoundingClientRect().top;
-    });
+    // element top relative to the document
+    const rect = el.getBoundingClientRect();
+    const elementTop = rect.top + window.scrollY;
+    const denom = Math.max(elementTop - stickyTop, 1);
 
     let ticking = false;
 
@@ -32,17 +31,11 @@ export default function StickyName({ children, className = "" }: { children: Rea
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        const rect = el.getBoundingClientRect();
-        const currentTop = rect.top;
-
-        // If currentTop is below initialTop, progress is 0.
-        // When currentTop reaches stickyTop, progress is 1.
-        const denom = Math.max(initialTop - stickyTop, 1);
-        const raw = (initialTop - currentTop) / denom;
+        const scrollY = window.scrollY || window.pageYOffset;
+        const raw = scrollY / denom;
         const p = Math.max(0, Math.min(1, raw));
         const s = 1 - p * (1 - minScale);
         setScale(s);
-
         ticking = false;
       });
     }

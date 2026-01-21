@@ -4,7 +4,7 @@ import StickyName from "@/components/StickyName";
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen overflow-hidden">
+    <main className="relative min-h-screen">
       {/* Fullscreen SVG background (layered radial gradients with subtle motion). */}
       <AnimatedSvgBackground />
 
