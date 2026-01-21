@@ -89,7 +89,7 @@ export function AnimatedSvgBackground({ layers = NUM_LAYERS }: { layers?: number
   useEffect(() => {
     const accent = layerData?.[0]?.colors?.[0] || PALETTE[0];
     // utility: darken a hex color by percent (0..1)
-    function darkenHex(hex, pct) {
+    function darkenHex(hex: string, pct: number): string {
       try {
         let h = hex.replace(/^#/, "");
         if (h.length === 3) h = h.split("").map((c) => c + c).join("");
