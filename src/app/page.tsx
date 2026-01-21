@@ -1,11 +1,11 @@
 import { RolePanels } from "@/components/RolePanels";
-import { GradientBackgroundCanvas } from "@/components/GradientBackgroundCanvas";
+import AnimatedSvgBackground from "@/components/AnimatedSvgBackground";
 
 export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-hidden">
-      {/* Fullscreen canvas background (sits behind all content). */}
-      <GradientBackgroundCanvas />
+      {/* Fullscreen SVG background (layered radial gradients with subtle motion). */}
+      <AnimatedSvgBackground />
 
       {/* Hero (fullscreen). */}
       <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-12 text-center">
