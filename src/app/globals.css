@@ -4,12 +4,13 @@
 
 body {
   @apply text-slate-900 antialiased;
-  /* Soft layered gradient fallback so the homepage has color even before JS runs. */
-  background-color: #bad3d8;
+  /* More visible layered gradient fallback so the homepage matches the design.
+     This will be visible before the canvas-based procedural gradient initializes. */
+  background-color: #f5e0d0;
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)),
-    radial-gradient(circle at 80% 0%, rgba(255, 230, 210, 0.45), rgba(255, 230, 210, 0)),
-    linear-gradient(135deg, #bad3d8 0%, #d8e6f4 45%, #f5dfd0 100%);
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6), rgba(255,255,255,0)),
+    radial-gradient(circle at 80% 0%, rgba(255,230,210,0.5), rgba(255,230,210,0)),
+    linear-gradient(180deg, #e9e7f6 0%, #f7d7c0 55%, #f2b48b 100%);
   background-repeat: no-repeat;
   background-size: 140% 140%, 160% 160%, cover;
   background-position: 50% 50%, 60% 30%, center;
