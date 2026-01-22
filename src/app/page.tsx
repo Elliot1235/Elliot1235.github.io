@@ -61,8 +61,8 @@ export default function HomePage() {
             </div>
             {/* bottom-left: logo + Product Manager */}
             <div style={{ position: 'absolute', left: 20, bottom: 18, display: 'flex', alignItems: 'center', gap: 10 }}>
-              <img src="/images/LOGODWARFLAB.svg" alt="Dwarf Lab" style={{ height: 24 }} />
-              <span style={{ display: 'inline-block', height: 24, lineHeight: '24px', fontSize: 14, color: '#374151', fontWeight: 500 }}>Product Manager</span>
+              <img src="/images/LOGODWARFLAB.svg" alt="Dwarf Lab" style={{ height: 18 }} />
+              <span className="text-xl font-semibold" style={{ color: '#374151' }}>Product Manager</span>
             </div>
 
             {/* bottom-right: Learn more button */}
@@ -83,6 +83,52 @@ export default function HomePage() {
                   Learn more
                 </button>
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Second experience card */}
+      <section className="relative z-10 px-4 py-4">
+        <div className="mx-auto w-[92vw] max-w-5xl">
+          <div style={{ background: 'rgba(93,93,93,0.3)', borderRadius: 10, padding: 28, position: 'relative' }}>
+            <div className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-start">
+              <div className="flex-shrink-0">
+                <div style={{ width: 256, height: 176, padding: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <img src="/images/KPMG.png" alt="KPMG" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: 6 }} />
+                </div>
+              </div>
+
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold">Applied Research on Low-Code Platforms</h3>
+                <p className="mt-3 text-base leading-relaxed text-slate-800">Designed an LSP-based evaluation framework aligned with ISO/IEC 9126 to assess low-code platforms across functionality, usability, and robustness. Conducted a comparative study of Mendix and OutSystems, combining performance testing with usability analysis to provide evidence-based platform selection guidance.</p>
+
+                <div style={{ height: 48 }} />
+              </div>
+            </div>
+
+            {/* bottom-left: KPMG logo + role */}
+            <div style={{ position: 'absolute', left: 20, bottom: 18, display: 'flex', alignItems: 'center', gap: 10 }}>
+              <img src="/images/LOGOKPMG.svg" alt="KPMG" style={{ height: 30 }} />
+              <span className="text-xl font-semibold" style={{ color: '#374151' }}>Research Intern</span>
+            </div>
+
+            {/* bottom-right: Learn more button (transparent) */}
+            <div style={{ position: 'absolute', right: 20, bottom: 14 }}>
+              <button
+                aria-label="Learn more"
+                style={{
+                  background: 'transparent',
+                  color: '#374151',
+                  border: 'none',
+                  padding: '10px 18px',
+                  borderRadius: 12,
+                  boxShadow: '0 8px 24px rgba(2,6,23,0.08)',
+                  cursor: 'pointer'
+                }}
+              >
+                Learn more
+              </button>
             </div>
           </div>
         </div>
