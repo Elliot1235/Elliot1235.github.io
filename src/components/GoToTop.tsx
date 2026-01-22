@@ -6,7 +6,7 @@ export default function GoToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    let observer;
+    let observer: IntersectionObserver | undefined;
     let sentinel;
 
     // Preferred: use IntersectionObserver on a tiny sentinel at the bottom of the document.

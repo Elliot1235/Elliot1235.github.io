@@ -102,6 +102,9 @@ export default function StickyName({ children, className = "" }: { children: Rea
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
+  // Only run once on mount, all state updates are handled inside rAF.
+  // ESLint wants isPinned/scale in deps, but we intentionally avoid them to prevent extra rerenders.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
