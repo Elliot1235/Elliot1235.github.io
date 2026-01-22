@@ -46,10 +46,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Let's talk / contact */}
-      <section id="contact" className="relative z-10 px-4 py-16">
-        <div className="mx-auto w-[85vw] max-w-5xl">
-          <h2 className="text-2xl font-semibold mb-4">Let's talk</h2>
+        {/* Let&apos;s talk / contact */}
+        <section id="contact" className="relative z-10 px-4 py-16">
+          <div className="mx-auto w-[85vw] max-w-5xl">
+            <h2 className="text-2xl font-semibold mb-4">Let&apos;s talk</h2>
           <p className="text-base leading-relaxed text-slate-800">Interested in collaborating or have a question? Email me at <a href="mailto:hello@example.com" className="underline">hello@example.com</a>.</p>
         </div>
       </section>
