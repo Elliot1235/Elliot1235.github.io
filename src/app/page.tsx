@@ -37,23 +37,52 @@ export default function HomePage() {
       <section id="me-experience" className="relative z-10 px-4 py-16">
         <div className="mx-auto w-[92vw] max-w-5xl">
           <h2 className="text-2xl font-semibold mb-6" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>My experience</h2>
-          <div className="flex flex-col items-start gap-8 md:flex-row md:items-start">
-            <div className="flex-shrink-0">
-              <div className="w-64 h-44 bg-slate-200/90 rounded-lg flex items-center justify-center text-slate-500 text-sm" aria-hidden>
-                占位图
+
+          <div style={{ background: 'rgba(93,93,93,0.3)', borderRadius: 10, padding: 28, position: 'relative' }}>
+            <div className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-start">
+              <div className="flex-shrink-0 flex flex-col gap-4">
+                <div style={{ width: 256, height: 176, padding: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <img src="/images/phone.png" alt="phone" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: 6 }} />
+                </div>
+                <div style={{ width: 256, height: 176, padding: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <img src="/images/dwarfmini.png" alt="DWARF Mini" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: 6 }} />
+                </div>
+              </div>
+
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold">Software Leadership (App v3.1.2 → v3.3.0)</h3>
+                <p className="mt-3 text-base leading-relaxed text-slate-800">Led the software team through multiple release cycles, driving the product from version 3.1.2 to 3.3.0. Guided by user needs, I owned solution design for IoT devices within a DevOps-driven development loop. I partnered closely with UI/UX designers to improve usability and reduce the learning curve, and worked cross-functionally with embedded and frontend engineers to maximize delivery efficiency and overall product quality.</p>
+
+                <h3 className="text-xl font-semibold mt-6">New Product Development – DWARF Mini</h3>
+                <p className="mt-3 text-base leading-relaxed text-slate-800">Led the product definition of DWARF Mini, the world&apos;s smallest smart telescope. I conducted user research to identify core pain points, proposed feature improvements, and balanced product positioning across the existing lineup. Key contributions included features such as a built-in dark filter and a 360° horizontal rotation mechanism.</p>
+
+                <div style={{ height: 48 }} />
               </div>
             </div>
+            {/* bottom-left: logo + Product Manager */}
+            <div style={{ position: 'absolute', left: 20, bottom: 18, display: 'flex', alignItems: 'center', gap: 10 }}>
+              <img src="/images/LOGODWARFLAB.svg" alt="Dwarf Lab" style={{ height: 24 }} />
+              <span style={{ display: 'inline-block', height: 24, lineHeight: '24px', fontSize: 14, color: '#374151', fontWeight: 500 }}>Product Manager</span>
+            </div>
 
-            <div className="flex-1">
-              <h3 className="text-xl font-semibold">Software Leadership (App v3.1.2 → v3.3.0)</h3>
-              <p className="mt-3 text-base leading-relaxed text-slate-800">Led the software team through multiple release cycles, driving the product from version 3.1.2 to 3.3.0. Guided by user needs, I owned solution design for IoT devices within a DevOps-driven development loop. I partnered closely with UI/UX designers to improve usability and reduce the learning curve, and worked cross-functionally with embedded and frontend engineers to maximize delivery efficiency and overall product quality.</p>
-
-              <h3 className="text-xl font-semibold mt-6">New Product Development – DWARF Mini</h3>
-              <p className="mt-3 text-base leading-relaxed text-slate-800">Led the product definition of DWARF Mini, the world&apos;s smallest smart telescope. I conducted user research to identify core pain points, proposed feature improvements, and balanced product positioning across the existing lineup. Key contributions included features such as a built-in dark filter and a 360° horizontal rotation mechanism.</p>
-
-              <div className="mt-6">
-                <Link href="/dwarf-mini" className="inline-block rounded-md bg-slate-900 text-white px-4 py-2 hover:opacity-95">Learn more</Link>
-              </div>
+            {/* bottom-right: Learn more button */}
+            <div style={{ position: 'absolute', right: 20, bottom: 14 }}>
+              <Link href="/dwarf-mini">
+                <button
+                  aria-label="Learn more"
+                  style={{
+                    background: 'transparent',
+                    color: '#374151',
+                    border: 'none',
+                    padding: '10px 18px',
+                    borderRadius: 12,
+                    boxShadow: '0 8px 24px rgba(2,6,23,0.08)',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Learn more
+                </button>
+              </Link>
             </div>
           </div>
         </div>

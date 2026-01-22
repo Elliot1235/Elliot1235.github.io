@@ -11,7 +11,7 @@ export default function DwarfMiniPage() {
 
         <section className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="md:col-span-1">
-            <div className="w-full h-64 bg-slate-200/90 rounded-lg flex items-center justify-center text-slate-500">占位图</div>
+            <img src="/images/dwarfmini.png" alt="DWARF Mini" className="w-full h-64 object-cover rounded-lg" />
           </div>
 
           <div className="md:col-span-2">

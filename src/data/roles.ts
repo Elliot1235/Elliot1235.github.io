@@ -58,6 +58,12 @@ export const roles: Role[] = [
         details:
           "Collaborated with engineering to design interactions that respected physical limitations while still feeling smooth, thoughtful, and joyful.",
         image: "/assets/pm3.png"
+      },
+      {
+        title: "Applied Research on Low-Code Platforms",
+        details:
+          "Designed an LSP-based evaluation framework aligned with ISO/IEC 9126 to assess low-code platforms across functionality, usability, and robustness. Conducted a comparative study of Mendix and OutSystems, combining performance testing with usability analysis to provide evidence-based platform selection guidance.",
+        image: "/images/KPMG.png"
       }
     ]
   },

@@ -45,27 +45,13 @@ function hslToRgb(h, s, l) {
 }
 
 function makePalette() {
-  // Deterministic palette tuned to Pantone 11-4201 (Cloud Dancer).
-  // CMYK(0,1,3,6) ≈ RGB(240,237,233) -> base color
-  const base = [240, 237, 233];
-
-  function mix(a, b, t) {
-    return [
-      Math.round(lerp(a[0], b[0], t)),
-      Math.round(lerp(a[1], b[1], t)),
-      Math.round(lerp(a[2], b[2], t))
-    ];
-  }
-
-  const lighter = [255, 255, 255];
-  const darker = [30, 30, 30];
-
-  return [
-    mix(base, darker, 0.18),
-    mix(base, lighter, 0.06),
-    mix(base, lighter, 0.18),
-    mix(base, lighter, 0.35)
-  ];
+  // Harmonious palette: analogous hues around a base hue with gentle saturation.
+  const baseHue = Math.random() * 360;
+  const offsets = [-22, 0, 18, 42];
+  const hues = offsets.map((o) => baseHue + o);
+  const sat = lerp(0.35, 0.55, Math.random());
+  const lights = [0.25, 0.38, 0.52, 0.70].map((l) => l + (Math.random() - 0.5) * 0.05);
+  return hues.map((h, i) => hslToRgb(h, sat, clamp01(lights[i])));
 }
 
 function mulberry32(seed) {
@@ -132,7 +118,7 @@ function colorFromHeight(palette, h) {
 }
 
 export function initGradientBackground(canvas) {
-  const ctx = canvas.getContext("2d", { alpha: false });
+  const ctx = canvas.getContext("2d", { alpha: true });
   if (!ctx) return () => {};
 
   // Render at a smaller internal resolution for performance, then scale up smoothly.
@@ -140,10 +126,10 @@ export function initGradientBackground(canvas) {
   let renderH = 0;
   let img = null;
   const offscreen = document.createElement("canvas");
-  const offCtx = offscreen.getContext("2d", { alpha: false });
+  const offCtx = offscreen.getContext("2d", { alpha: true });
   if (!offCtx) return () => {};
 
-  const seed = 123456789;
+  const seed = (Math.random() * 1e9) | 0;
   const noise2D = makeValueNoise(seed);
   const palette = makePalette();
 
@@ -183,9 +169,8 @@ export function initGradientBackground(canvas) {
     oy += 0.0015;
 
     const data = img.data;
-    // Higher spatial frequency and one fewer octave to keep visible banding smooth but clear.
-    const scale = 0.05;
-    const octaves = 4;
+    const scale = 0.018; // low spatial frequency = smooth gradients
+    const octaves = 5;
 
     for (let y = 0; y < renderH; y++) {
       const ny = (y / renderH) * 10;
