@@ -24,17 +24,23 @@ export default function GoToTop() {
         aria-label="Go to top"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         style={{
-          background: "var(--accent-color-dark, #d2cfc6)",
-          color: "#111827",
+          background: "#ffffff",
+          color: "#374151",
           border: "none",
-          padding: "10px 14px",
-          borderRadius: 12,
-          boxShadow: "0 6px 18px rgba(15,23,42,0.12)",
+          width: 56,
+          height: 56,
+          padding: 0,
+          borderRadius: 9999,
+          boxShadow: "0 8px 24px rgba(2,6,23,0.12)",
           cursor: "pointer",
-          display: "inline-block"
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center"
         }}
       >
-        ↑ Top
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <path d="M6 15L12 9L18 15" stroke="#374151" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </button>
     </div>
   );
