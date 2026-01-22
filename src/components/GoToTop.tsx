@@ -7,10 +7,10 @@ export default function GoToTop() {
 
   useEffect(() => {
     let observer: IntersectionObserver | undefined;
-    let sentinel;
+    let sentinel: HTMLElement | null = null;
 
-    // Preferred: use IntersectionObserver on a tiny sentinel at the bottom of the document.
-    if (typeof IntersectionObserver !== "undefined") {
+    // SSR safety: only run DOM code in browser
+    if (typeof window !== "undefined" && typeof IntersectionObserver !== "undefined") {
       sentinel = document.createElement("div");
       sentinel.style.position = "absolute";
       sentinel.style.left = "0";
@@ -49,12 +49,12 @@ export default function GoToTop() {
 
     return () => {
       window.removeEventListener("scroll", fallbackScroll);
-      try {
-        if (observer && sentinel) observer.disconnect();
-      } catch (e) {}
-      try {
-        if (sentinel && sentinel.parentNode) sentinel.parentNode.removeChild(sentinel);
-      } catch (e) {}
+      if (observer) {
+        observer.disconnect();
+      }
+      if (sentinel && sentinel.parentNode) {
+        sentinel.parentNode.removeChild(sentinel);
+      }
     };
   }, []);
 
