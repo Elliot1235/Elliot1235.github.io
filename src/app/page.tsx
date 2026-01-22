@@ -36,7 +36,7 @@ export default function HomePage() {
       {/* Me Experience (uploaded content) */}
       <section id="me-experience" className="relative z-10 px-4 py-16">
         <div className="mx-auto w-[92vw] max-w-5xl">
-          <h2 className="text-2xl font-semibold mb-6" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>My experience</h2>
+          <h2 id="experience-title" className="text-2xl font-semibold mb-6" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>My experience</h2>
 
           <div style={{ background: 'rgba(93,93,93,0.3)', borderRadius: 10, padding: 28, position: 'relative' }}>
             <div className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-start">
@@ -143,7 +143,7 @@ export default function HomePage() {
       </section>
 
         {/* Let&apos;s talk / contact */}
-        <section id="contact" className="relative z-10 px-4 py-16">
+        <section id="contact" className="relative z-10 px-4 pt-16 pb-32">
           <div className="mx-auto w-[85vw] max-w-5xl">
               <h2 className="text-2xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>Let&apos;s talk</h2>
               <p className="text-base leading-relaxed text-slate-800">

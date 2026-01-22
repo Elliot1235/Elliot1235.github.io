@@ -6,20 +6,76 @@ export default function GoToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    function onScroll() {
-      const scrollY = window.scrollY || window.pageYOffset;
-      const atBottom = (window.innerHeight + scrollY) >= (document.documentElement.scrollHeight - 24);
-      setVisible(Boolean(atBottom));
+    let observer;
+    let sentinel;
+
+    // Preferred: use IntersectionObserver on a tiny sentinel at the bottom of the document.
+    if (typeof IntersectionObserver !== "undefined") {
+      sentinel = document.createElement("div");
+      sentinel.style.position = "absolute";
+      sentinel.style.left = "0";
+      sentinel.style.right = "0";
+      sentinel.style.bottom = "0";
+      sentinel.style.height = "1px";
+      sentinel.style.pointerEvents = "none";
+      sentinel.setAttribute("data-gototop-sentinel", "");
+      document.body.appendChild(sentinel);
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          setVisible(Boolean(entry && entry.isIntersecting));
+        },
+        { root: null, threshold: 0, rootMargin: "0px 0px -24px 0px" }
+      );
+      observer.observe(sentinel);
     }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+
+    // Fallback: simple, rAF-throttled scroll check (keeps previous logic but safer).
+    let tick = false;
+    function fallbackScroll() {
+      if (tick) return;
+      tick = true;
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const atBottom = window.innerHeight + scrollY >= (document.documentElement.scrollHeight - 24);
+        setVisible(Boolean(atBottom));
+        tick = false;
+      });
+    }
+    window.addEventListener("scroll", fallbackScroll, { passive: true });
+    // Initial assess: either observer will trigger, or run fallback immediately.
+    fallbackScroll();
+
+    return () => {
+      window.removeEventListener("scroll", fallbackScroll);
+      try {
+        if (observer && sentinel) observer.disconnect();
+      } catch (e) {}
+      try {
+        if (sentinel && sentinel.parentNode) sentinel.parentNode.removeChild(sentinel);
+      } catch (e) {}
+    };
   }, []);
 
-  if (!visible) return null;
-
+  // Render as a fixed overlay so showing/hiding doesn't change document flow
   return (
-    <div style={{ textAlign: "center", marginTop: 36, marginBottom: 8 }}>
+    <div
+      aria-hidden={!visible}
+      style={{
+        position: "fixed",
+        left: 0,
+        right: 0,
+        bottom: 24,
+        display: "flex",
+        justifyContent: "center",
+        pointerEvents: visible ? "auto" : "none",
+        zIndex: 9999,
+        transition: "opacity 180ms linear, transform 180ms linear",
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(8px)"
+      }}
+    >
       <button
         aria-label="Go to top"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
