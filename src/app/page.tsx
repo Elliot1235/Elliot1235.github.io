@@ -4,6 +4,7 @@ import Link from "next/link";
 const AnimatedSvgBackground = dynamic(() => import("@/components/AnimatedSvgBackground"), { ssr: false });
 const StickyName = dynamic(() => import("@/components/StickyName"), { ssr: false });
 const GoToTop = dynamic(() => import("@/components/GoToTop"), { ssr: false });
+const UpdatedOn = dynamic(() => import("@/components/UpdatedOn"), { ssr: false });
 
 export default function HomePage() {
   return (
@@ -157,6 +158,7 @@ export default function HomePage() {
 
       {/* Go to top button */}
       {/* Client-only component */}
+      <UpdatedOn />
       <script type="module">
         {/* placeholder: GoToTop is client component imported below */}
       </script>
