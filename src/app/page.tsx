@@ -138,8 +138,27 @@ export default function HomePage() {
       {/* About me */}
       <section id="about" className="relative z-10 px-4 py-16">
         <div className="mx-auto w-[85vw] max-w-5xl">
-          <h2 className="text-2xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>About me</h2>
-          <p className="text-base leading-relaxed text-slate-800">I build products by combining user empathy with pragmatic delivery. I enjoy working across design, data and engineering to create delightful, reliable experiences.</p>
+          <div className="mx-auto max-w-[680px] text-center">
+            <h2 className="text-2xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>About me</h2>
+
+            <div className="text-slate-800 text-base leading-[1.75] space-y-6">
+              <p>Born in 2000, I grew up alongside the rapid rise of the digital world. From Nokia and HTC to Apple, Amazon, YouTube, TikTok and AI, I witnessed the game changers that reshaped how we live, work, and connect. Screens gradually became the objects we look at most—often more than the world around us.</p>
+
+              <p>Fascinated by the mobile internet from an early age, I drew my own phone and operating system on paper at 13. I helped adults navigate their devices when steep learning curves got in the way. That curiosity—and frustration—naturally led me to study computer science and eventually become a product manager.</p>
+
+              <p>As digital products became inseparable from daily life, my focus evolved. Rather than measuring success solely by screen time or engagement, I care more about the value a product brings:</p>
+
+              <div className="mt-4 space-y-4 text-sm text-slate-400">
+                <p>Is the experience pleasant?</p>
+                <p>Does the user journey feel intuitive?</p>
+                <p>Does it genuinely make life easier or better?</p>
+              </div>
+
+              <p>Looking ahead, screens will continue to appear in more places, reshaping experiences through simplification or reinvention. In this process, the role of the product manager becomes increasingly important—balancing technology, design, and human intuition.</p>
+
+              <p className="font-medium">I hope to create products that feel invisible to users, yet meaningful in impact—and I’d love to create something with you that truly reshapes the world.</p>
+            </div>
+          </div>
         </div>
       </section>
 

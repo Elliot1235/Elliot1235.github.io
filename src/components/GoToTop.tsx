@@ -80,7 +80,7 @@ export default function GoToTop() {
         aria-label="Go to top"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         style={{
-          background: "#ffffff",
+          background: "rgba(255,255,255,0.2)",
           color: "#374151",
           border: "none",
           width: 56,
