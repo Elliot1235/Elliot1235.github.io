@@ -5,6 +5,7 @@ const AnimatedSvgBackground = dynamic(() => import("@/components/AnimatedSvgBack
 const StickyName = dynamic(() => import("@/components/StickyName"), { ssr: false });
 const GoToTop = dynamic(() => import("@/components/GoToTop"), { ssr: false });
 const UpdatedOn = dynamic(() => import("@/components/UpdatedOn"), { ssr: false });
+const FaceGallery = dynamic(() => import("@/components/FaceGallery"), { ssr: false });
 
 export default function HomePage() {
   return (
@@ -161,6 +162,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Put a face to the name (gallery) */}
+      <FaceGallery />
 
         {/* Let&apos;s talk / contact */}
         <section id="contact" className="relative z-10 px-4 pt-16 pb-32">

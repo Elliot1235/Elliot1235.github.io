@@ -8,15 +8,14 @@ export default function UpdatedOn() {
   useEffect(() => {
     if (!ref.current) return;
     const el = ref.current;
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Consider visible only when the element is fully in the viewport
-          setVisible(entry.intersectionRatio >= 1);
+          // Consider visible when element enters the viewport moderately (50% visible)
+          setVisible(entry.isIntersecting || entry.intersectionRatio >= 0.5);
         });
       },
-      { threshold: [1.0] }
+      { threshold: [0, 0.5, 1.0] }
     );
 
     observer.observe(el);
@@ -29,9 +28,9 @@ export default function UpdatedOn() {
         aria-hidden={!visible}
         style={{
           fontSize: 12,
-          color: "white",
-          opacity: visible ? 0.65 : 0,
-          transition: "opacity 180ms ease",
+          color: "#374151",
+          opacity: visible ? 0.85 : 0,
+          transition: "opacity 200ms ease",
           padding: "6px 8px",
         }}
       >
