@@ -65,6 +65,13 @@ export const roles: Role[] = [
           "Designed an LSP-based evaluation framework aligned with ISO/IEC 9126 to assess low-code platforms across functionality, usability, and robustness. Conducted a comparative study of Mendix and OutSystems, combining performance testing with usability analysis to provide evidence-based platform selection guidance.",
         image: "/images/KPMG.png"
       }
+      ,
+      {
+        title: "Agricultural Communication Platform (Concept & Prototype)",
+        details:
+          "Designed and prototyped a communication platform for farmers in Burkina Faso to sell non-timber forest products using feature phones. The project explored how digital services could work under low-connectivity and non-smartphone constraints.\n\nI led system design and implementation, creating UML and activity diagrams and developing a VoiceXML-based voice application for feature phone users, alongside a web-based information platform. I built user-facing interfaces with HTML, CSS, and JavaScript, and implemented backend services using JSP, Servlet, and MySQL. The work followed a DevOps-style iteration loop covering design, testing, and deployment in a simulated production environment.",
+        image: "/images/ICT4D.png"
+      }
     ]
   },
   {
