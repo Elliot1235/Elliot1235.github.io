@@ -1,128 +1,216 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 export default function FaceGallery(): JSX.Element {
-  const [images, setImages] = useState<string[] | null>(null);
-
-  useEffect(() => {
-    let mounted = true;
-
-    async function probe() {
-      const found: string[] = [];
-      const maxCandidates = 12;
-      const exts = ["jpg", "jpeg", "png", "webp", "JPG", "JPEG", "PNG", "WEBP"];
-
-      for (let i = 1; i <= maxCandidates; i++) {
-        if (found.length >= 7) break;
-        for (const ext of exts) {
-          const url = `/images/gallery/face${i}.${ext}`;
-          try {
-            const res = await fetch(url, { method: "HEAD" });
-            if (res.ok) {
-              found.push(url);
-              break;
-            }
-          } catch (e) {
-            // ignore
-          }
-        }
-      }
-
-      // If no gallery images found, fall back to the site's default image repeated.
-      if (found.length === 0) {
-        const fallback = Array.from({ length: 7 }, () => "/images/default.JPG");
-        if (mounted) setImages(fallback);
-        return;
-      }
-
-      // If fewer than 7 found, fill the remainder with the default.
-      while (found.length < 7) found.push("/images/default.JPG");
-
-      if (mounted) setImages(found.slice(0, 7));
-    }
-
-    probe();
-    return () => {
-      mounted = false;
-    };
-  }, []);
-
-  const imgs = images ?? Array.from({ length: 7 }, () => "/images/default.JPG");
+  const images = [
+    {
+      src: "/images/qiu.jpg",
+      type: "qiu",
+      caption: "Product iteration with Product Manager Qiu",
+    },
+    {
+      src: "/images/matisse.jpg",
+      type: "cover",
+      caption: "A tribute to Matisse",
+    },
+    {
+      src: "/images/draw.png",
+      type: "square",
+      caption: "Drawing in a meeting",
+    },
+    {
+      src: "/images/Depot.JPG",
+      type: "square",
+      caption: "Always reimagining (Depot Museum)",
+    },
+    {
+      src: "/images/xiong.png",
+      type: "square",
+      caption: "Collaborating closely with Xiong on UI/UX design",
+    },
+    {
+      src: "/images/Jumbo.jpg",
+      type: "wide",
+      caption: "Worked as a stock clerk and cashier at Jumbo",
+    },
+    {
+      src: "/images/Sky.JPG",
+      type: "wide",
+      caption: "Immersing myself in the user’s environment and designing with empathy",
+    },
+  ];
 
   return (
     <section id="put-a-face" className="relative z-10 px-4 py-12">
       <div className="mx-auto w-[85vw] max-w-5xl">
-        <h2 className="text-2xl font-semibold mb-6" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>Put a face to the name</h2>
+        <h2
+          className="text-2xl font-semibold mb-6"
+          style={{ color: "var(--accent-color-dark, #d2cfc6)" }}
+        >
+          Put a face to the name
+        </h2>
 
         <div className="face-grid">
-          <div className="face-item" data-area="p1">
-            <img src={imgs[0]} alt="photo-1" />
+          {/* Row 1 */}
+          <div className="face-item p1">
+            <div className="qiu-frame">
+              <img src={images[0].src} alt="" />
+              <span className="caption caption-qiu">
+                {images[0].caption}
+              </span>
+            </div>
           </div>
-          <div className="face-item" data-area="p2">
-            <img src={imgs[1]} alt="photo-2" />
+
+          <div className="face-item p2">
+            <img src={images[1].src} alt="" />
+            <span className="caption">{images[1].caption}</span>
           </div>
-          <div className="face-item" data-area="p3">
-            <img src={imgs[2]} alt="photo-3" />
+
+          {/* Row 2 */}
+          <div className="face-item p3">
+            <img src={images[2].src} alt="" />
+            <span className="caption">{images[2].caption}</span>
           </div>
-          <div className="face-item" data-area="p4">
-            <img src={imgs[3]} alt="photo-4" />
+
+          <div className="face-item p4">
+            <img src={images[3].src} alt="" />
+            <span className="caption">{images[3].caption}</span>
           </div>
-          <div className="face-item" data-area="p5">
-            <img src={imgs[4]} alt="photo-5" />
+
+          <div className="face-item p5">
+            <img src={images[4].src} alt="" />
+            <span className="caption">{images[4].caption}</span>
           </div>
-          <div className="face-item" data-area="p6">
-            <img src={imgs[5]} alt="photo-6" />
-          </div>
-          <div className="face-item" data-area="p7">
-            <img src={imgs[6]} alt="photo-7" />
+
+          {/* Row 3 — full width */}
+          <div className="face-row-wide p8">
+            <div className="face-wide-item">
+              <img src={images[5].src} alt="" />
+              <span className="caption">{images[5].caption}</span>
+            </div>
+            <div className="face-wide-item">
+              <img src={images[6].src} alt="" />
+              <span className="caption">{images[6].caption}</span>
+            </div>
           </div>
         </div>
 
         <style>{`
+          /* ================= GRID ================= */
           .face-grid {
             display: grid;
-            grid-template-columns: 1fr 1.6fr 1.6fr;
-            grid-template-rows: repeat(3, minmax(120px, 1fr));
+            grid-template-columns: 1fr 1fr 1fr;
             grid-template-areas:
               "p1 p2 p2"
               "p3 p4 p5"
-              "p3 p6 p7";
+              "p8 p8 p8";
             gap: 16px;
           }
 
+          .p1 { grid-area: p1; }
+          .p2 { grid-area: p2; }
+          .p3 { grid-area: p3; }
+          .p4 { grid-area: p4; }
+          .p5 { grid-area: p5; }
+          .p8 { grid-area: p8; }
+
+          /* ================= BASE ITEM ================= */
           .face-item {
             position: relative;
             width: 100%;
-            height: 100%;
             overflow: hidden;
           }
 
           .face-item img {
+            width: 100%;
+            height: 100%;
             display: block;
+            object-fit: cover;
+          }
+
+          /* ================= CAPTION ================= */
+          .caption {
+            position: absolute;
+            right: 8px;
+            bottom: 8px;
+            padding: 6px 10px;
+            font-size: 12px;
+            line-height: 1;
+            color: #111;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(3px);
+            border-radius: 1px;
+            white-space: nowrap;
+          }
+
+          /* ================= QIU FRAME ================= */
+          .qiu-frame {
+            position: relative;
+            background: rgb(243, 233, 221);
+
+            /* paper-like padding */
+            padding: 12px;
+            padding-bottom: 20px;
+
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+          }
+
+          .qiu-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            object-position: top center;
+          }
+
+          /* caption sits on the frame, not the image */
+          .caption-qiu {
+            right: 12px;
+            bottom: 12px;
+          }
+
+          /* ================= SECOND ROW ================= */
+          .p3,
+          .p4,
+          .p5 {
+            aspect-ratio: 1 / 1;
+          }
+
+          /* ================= THIRD ROW ================= */
+          .face-row-wide {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            width: 100%;
+          }
+
+          .face-wide-item {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+          }
+
+          .face-wide-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 0px;
           }
 
-          .face-item[data-area="p1"] { grid-area: p1; }
-          .face-item[data-area="p2"] { grid-area: p2; }
-          .face-item[data-area="p3"] { grid-area: p3; }
-          .face-item[data-area="p4"] { grid-area: p4; }
-          .face-item[data-area="p5"] { grid-area: p5; }
-          .face-item[data-area="p6"] { grid-area: p6; }
-          .face-item[data-area="p7"] { grid-area: p7; }
-
-          /* Responsive: stack into two columns on narrow screens */
+          /* ================= RESPONSIVE ================= */
           @media (max-width: 768px) {
             .face-grid {
               grid-template-columns: 1fr 1fr;
-              grid-template-rows: repeat(4, minmax(120px, 1fr));
               grid-template-areas:
                 "p1 p2"
                 "p3 p4"
-                "p5 p6"
-                "p7 p7";
+                "p5 p5"
+                "p8 p8";
+            }
+
+            .face-row-wide {
+              grid-template-columns: 1fr;
             }
           }
         `}</style>
