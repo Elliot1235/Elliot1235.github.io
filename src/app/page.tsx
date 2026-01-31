@@ -6,6 +6,7 @@ const StickyName = dynamic(() => import("@/components/StickyName"), { ssr: false
 const GoToTop = dynamic(() => import("@/components/GoToTop"), { ssr: false });
 const UpdatedOn = dynamic(() => import("@/components/UpdatedOn"), { ssr: false });
 const FaceGallery = dynamic(() => import("@/components/FaceGallery"), { ssr: false });
+const FlipCard = dynamic(() => import("@/components/FlipCard"), { ssr: false });
 
 export default function HomePage() {
   return (
@@ -35,10 +36,12 @@ export default function HomePage() {
         </div>
       </section>
 
+      
+      {/* My experience */}
       {/* My experience 1 */}
-      <section id="me-experience" className="relative z-10 px-4 py-[1.2rem]">
+      <section id="me-experience" className="relative z-10 px-4 py-8">
         <div className="mx-auto w-[92vw] max-w-5xl">
-          <h2 id="experience-title" className="text-2xl font-semibold mb-8" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>My experience</h2>
+          <h2 id="experience-title" className="text-3xl font-semibold mb-8" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>My experience</h2>
 
           <div style={{ background: 'rgba(93,93,93,0.2)', borderRadius: 10, padding: 28, position: 'relative' }}>
             <div className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-start">
@@ -92,7 +95,7 @@ export default function HomePage() {
       </section>
 
       {/* My experience 2 */}
-      <section className="relative z-10 px-4 py-[1.2rem]">
+      <section className="relative z-10 px-4 py-8">
         <div className="mx-auto w-[92vw] max-w-5xl">
           <div style={{ background: 'rgba(93,93,93,0.2)', borderRadius: 10, padding: 28, position: 'relative' }}>
             <div className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-start">
@@ -139,7 +142,7 @@ export default function HomePage() {
       </section>
 
       {/* My experience 3 */}
-      <section className="relative z-10 px-4 py-[1.2rem]">
+      <section className="relative z-10 px-4 py-8">
         <div className="mx-auto w-[92vw] max-w-5xl">
           <div style={{ background: 'rgba(93,93,93,0.2)', borderRadius: 10, padding: 28, position: 'relative' }}>
             <div className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-start">
@@ -185,9 +188,39 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      
+      
+      
+      {/* Things I am good at */}
+      <section id="skills" className="relative z-10 px-4 py-16">
+        <div className="mx-auto w-[92vw] max-w-5xl">
+          <h2 className="text-3xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>Things I am good at</h2>
+
+          <div className="max-w-[880px]">
+            <p className="text-base leading-relaxed text-slate-900">
+              I break complex product problems into clear, actionable pieces.
+              <br />I translate ideas into logic teams can align on, from concept to execution.
+              <br />Collaboration matters, details matter, and a user-friendly experience is always the goal.
+            </p>
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-16">
+            <FlipCard frontSrc="/images/AI.png" alt="AI" />
+            <FlipCard frontSrc="/images/Design.png" alt="Design" />
+            <FlipCard frontSrc="/images/Coding.png" alt="Coding" />
+          </div>
+
+
+
+        </div>
+      </section>
+
+      
+      
+      {/* About me */}
       <section id="about" className="relative z-10 px-4 py-16">
         <div className="mx-auto w-[92vw] max-w-5xl">
-          <h2 className="text-2xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>About me</h2>
+          <h2 className="text-3xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>About me</h2>
 
           <div className="mx-auto max-w-[680px]">
             <div className="text-slate-800 text-base leading-[1.75] space-y-6 text-center">
@@ -213,11 +246,30 @@ export default function HomePage() {
       <FaceGallery />
 
         {/* Let&apos;s talk / contact */}
-        <section id="contact" className="relative z-10 px-4 pt-16 pb-32">
+        <section id="contact" className="relative z-10 px-4 py-16">
           <div className="mx-auto w-[85vw] max-w-5xl">
-              <h2 className="text-2xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>Let&apos;s talk</h2>
+              <h2 className="text-3xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>Let&apos;s talk</h2>
               <p className="text-base leading-relaxed text-slate-800">
-                <a href="https://www.linkedin.com/in/elliot-luo-7181ab254/" target="_blank" rel="noreferrer" className="font-bold no-underline">LinkedIn</a>
+                <a
+                  href="https://www.linkedin.com/in/elliot-luo-7181ab254/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-bold no-underline inline-flex items-center gap-1 group"
+                  aria-label="Open LinkedIn in a new tab"
+                >
+                  <span className="transition-transform transform group-hover:scale-[1.15]">LinkedIn</span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    style={{ width: '1.2rem', height: '1.2rem' }}
+                    className="inline-block"
+                  >
+                    <path d="M6 18 L18 6" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <path d="M11 6 H18 V13" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                  </svg>
+                </a>
               </p>
               <p className="text-base leading-relaxed text-slate-800 mt-3">
                 Or drop me an email at <a href="mailto:haoluo2000@gmail.com" className="font-bold no-underline">haoluo2000@gmail.com</a>

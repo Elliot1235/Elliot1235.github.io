@@ -31,7 +31,7 @@ export default function FaceGallery(): JSX.Element {
     {
       src: "/images/Jumbo.jpg",
       type: "wide",
-      caption: "Worked as a stock clerk and cashier at Jumbo",
+      caption: "Worked as a stock clerk and cashier at Jumbo supermarket",
     },
     {
       src: "/images/Sky.JPG",
@@ -41,10 +41,10 @@ export default function FaceGallery(): JSX.Element {
   ];
 
   return (
-    <section id="put-a-face" className="relative z-10 px-4 py-12">
+    <section id="put-a-face" className="relative z-10 px-4 py-16">
       <div className="mx-auto w-[85vw] max-w-5xl">
         <h2
-          className="text-2xl font-semibold mb-6"
+          className="text-3xl font-semibold mb-6"
           style={{ color: "var(--accent-color-dark, #d2cfc6)" }}
         >
           Put a face to the name
