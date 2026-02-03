@@ -122,6 +122,7 @@ export default function HomePage() {
 
             {/* bottom-right: Learn more button (transparent) */}
             <div style={{ position: 'absolute', right: 20, bottom: 14 }}>
+              <Link href="/KPMG">
               <button
                 aria-label="Learn more"
                 style={{
@@ -136,6 +137,7 @@ export default function HomePage() {
               >
                 Learn more
               </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -170,6 +172,7 @@ export default function HomePage() {
 
             {/* bottom-right: Learn more button (transparent) */}
             <div style={{ position: 'absolute', right: 20, bottom: 14 }}>
+              <Link href="/ICT4D">
               <button
                 aria-label="Learn more"
                 style={{
@@ -184,6 +187,7 @@ export default function HomePage() {
               >
                 Learn more
               </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -205,10 +209,29 @@ export default function HomePage() {
           </div>
 
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-16">
-            <FlipCard frontSrc="/images/AI.png" alt="AI" />
-            <FlipCard frontSrc="/images/Design.png" alt="Design" />
-            <FlipCard frontSrc="/images/Coding.png" alt="Coding" />
-          </div>
+  <FlipCard
+    frontSrc="/images/AI.png"
+    backSrc="/images/Back1.png"
+    alt="AI"
+    
+  />
+
+  <FlipCard
+    frontSrc="/images/Design.png"
+    backSrc="/images/Back2.png"
+    alt="Design"
+    
+  />
+
+  <FlipCard
+    frontSrc="/images/Coding.png"
+    backSrc="/images/Back3.png"
+    alt="Coding"
+    
+  />
+</div>
+
+
 
 
 

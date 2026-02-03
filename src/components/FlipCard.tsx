@@ -5,12 +5,14 @@ import { motion } from "framer-motion";
 
 type Props = {
   frontSrc: string;
+  backSrc: string;   // 👈 NEW
   alt?: string;
   className?: string;
 };
 
 export default function FlipCard({
   frontSrc,
+  backSrc,
   alt = "card",
   className = "",
 }: Props) {
@@ -34,15 +36,12 @@ export default function FlipCard({
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
         className="relative h-full w-full"
-        style={{
-          transformStyle: "preserve-3d",
-        }}
+        style={{ transformStyle: "preserve-3d" }}
       >
         {/* BACK FACE */}
         <div
           className="
             absolute inset-0 rounded-lg overflow-hidden
-            bg-white
             shadow-[12px_12px_24px_rgba(0,0,0,0.14)]
           "
           style={{
@@ -51,7 +50,7 @@ export default function FlipCard({
           }}
         >
           <img
-            src="/images/Back.png"
+            src={backSrc}
             alt="card back"
             className="h-full w-full object-cover select-none"
             draggable={false}
@@ -62,7 +61,6 @@ export default function FlipCard({
         <div
           className="
             absolute inset-0 rounded-lg overflow-hidden
-            bg-white
             shadow-[12px_12px_24px_rgba(0,0,0,0.14)]
           "
           style={{
