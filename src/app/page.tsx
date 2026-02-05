@@ -43,7 +43,7 @@ export default function HomePage() {
         <div className="mx-auto w-[92vw] max-w-5xl">
           <h2 id="experience-title" className="text-3xl font-semibold mb-8" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>My experience</h2>
 
-          <div style={{ background: 'rgba(93,93,93,0.2)', borderRadius: 10, padding: 28, position: 'relative' }}>
+          <div style={{ background: 'rgb(246,246,246,0.8)', borderRadius: 10, padding: 28, position: 'relative', outline: '3px solid black', outlineOffset: '-1.5px' }}>
             <div className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-start">
               <div className="flex-shrink-0 flex flex-col gap-4">
                 <div style={{ width: 256, height: 176, padding: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -73,18 +73,10 @@ export default function HomePage() {
 
             {/* bottom-right: Learn more button */}
             <div style={{ position: 'absolute', right: 20, bottom: 14 }}>
-              <Link href="/dwarf-mini">
+              <Link href="/DWARFLAB">
                 <button
                   aria-label="Learn more"
-                  style={{
-                    background: 'transparent',
-                    color: '#374151',
-                    border: 'none',
-                    padding: '10px 18px',
-                    borderRadius: 12,
-                    boxShadow: '0 8px 24px rgba(2,6,23,0.08)',
-                    cursor: 'pointer'
-                  }}
+                  className="px-4 py-2 rounded-full border-2 border-black bg-[rgb(246,246,246,0.8)] text-black transition-all duration-150 hover:bg-black hover:text-white hover:scale-[1.05] active:scale-[0.95] focus:outline-none"
                 >
                   Learn more
                 </button>
@@ -97,7 +89,7 @@ export default function HomePage() {
       {/* My experience 2 */}
       <section className="relative z-10 px-4 py-8">
         <div className="mx-auto w-[92vw] max-w-5xl">
-          <div style={{ background: 'rgba(93,93,93,0.2)', borderRadius: 10, padding: 28, position: 'relative' }}>
+          <div style={{ background: 'rgb(246,246,246,0.8)', borderRadius: 10, padding: 28, position: 'relative', outline: '3px solid black', outlineOffset: '-1.5px' }}>
             <div className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-start">
               <div className="flex-shrink-0">
                 <div style={{ width: 256, height: 176, padding: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -123,20 +115,12 @@ export default function HomePage() {
             {/* bottom-right: Learn more button (transparent) */}
             <div style={{ position: 'absolute', right: 20, bottom: 14 }}>
               <Link href="/KPMG">
-              <button
-                aria-label="Learn more"
-                style={{
-                  background: 'transparent',
-                  color: '#374151',
-                  border: 'none',
-                  padding: '10px 18px',
-                  borderRadius: 12,
-                  boxShadow: '0 8px 24px rgba(2,6,23,0.08)',
-                  cursor: 'pointer'
-                }}
-              >
-                Learn more
-              </button>
+                <button
+                  aria-label="Learn more"
+                  className="px-4 py-2 rounded-full border-2 border-black bg-[rgb(246,246,246,0.8)] text-black transition-all duration-150 hover:bg-black hover:text-white hover:scale-[1.05] active:scale-[0.95] focus:outline-none"
+                >
+                  Learn more
+                </button>
               </Link>
             </div>
           </div>
@@ -146,7 +130,7 @@ export default function HomePage() {
       {/* My experience 3 */}
       <section className="relative z-10 px-4 py-8">
         <div className="mx-auto w-[92vw] max-w-5xl">
-          <div style={{ background: 'rgba(93,93,93,0.2)', borderRadius: 10, padding: 28, position: 'relative' }}>
+          <div style={{ background: 'rgb(246,246,246,0.8)', borderRadius: 10, padding: 28, position: 'relative', outline: '3px solid black', outlineOffset: '-1.5px' }}>
             <div className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-start">
               <div className="flex-shrink-0">
                 <div style={{ width: 256, height: 280, padding: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -173,20 +157,12 @@ export default function HomePage() {
             {/* bottom-right: Learn more button (transparent) */}
             <div style={{ position: 'absolute', right: 20, bottom: 14 }}>
               <Link href="/ICT4D">
-              <button
-                aria-label="Learn more"
-                style={{
-                  background: 'transparent',
-                  color: '#374151',
-                  border: 'none',
-                  padding: '10px 18px',
-                  borderRadius: 12,
-                  boxShadow: '0 8px 24px rgba(2,6,23,0.08)',
-                  cursor: 'pointer'
-                }}
-              >
-                Learn more
-              </button>
+                <button
+                  aria-label="Learn more"
+                  className="px-4 py-2 rounded-full border-2 border-black bg-[rgb(246,246,246,0.8)] text-black transition-all duration-150 hover:bg-black hover:text-white hover:scale-[1.05] active:scale-[0.95] focus:outline-none"
+                >
+                  Learn more
+                </button>
               </Link>
             </div>
           </div>
