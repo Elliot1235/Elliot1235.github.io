@@ -7,8 +7,8 @@ import React, { useState } from "react";
 ------------------------------ */
 
 type Section = {
-  title: string;
-  text: string;
+  title?: string;
+  text?: string;
   image?: string;
   video?: string;
   custom?: React.ReactNode;  
@@ -114,12 +114,12 @@ const FEATURES: Feature[] = [
     {
       custom: (
         <div>
-          <h2
-            className="text-2xl font-semibold mb-4 mt-6"
+          <h3
+            className="text-2xl font-semibold mb-4 mt-10"
             style={{ color: "#000000" }}
           >
             Interested in working together? Let’s talk.
-          </h2>
+          </h3>
 
 
 
@@ -174,13 +174,7 @@ const FEATURES: Feature[] = [
               haoluo2000@gmail.com
             </a>
           </p>
-          <img
-            src="/images/art1.jpg"
-            className="mt-8"
-          />
-          <p className="text-sm text-slate-600 mt-2 text-right">
-  By みなはむ (mi na ha mu).
-</p>
+          
         </div>
         
       ),
@@ -205,7 +199,10 @@ export default function DwarfMiniPage() {
   };
 
   return (
-    <main className="min-h-screen">
+    <main
+      className="min-h-screen relative z-10"
+      style={{ backgroundColor: "rgb(246,246,246)" }}
+    >
       {/* Header */}
       <header
         className="relative flex items-center justify-center w-full h-56 md:h-72"
@@ -222,7 +219,7 @@ export default function DwarfMiniPage() {
 
       {/* Content */}
       <section
-        className="relative z-10 px-4 py-10"
+        className="relative z-10 px-4 py-6"
         style={{ backgroundColor: "rgb(246,246,246)" }}
       >
         <div className="mx-auto w-[92vw] max-w-5xl">
