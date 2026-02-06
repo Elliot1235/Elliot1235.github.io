@@ -34,7 +34,7 @@ export default function UpdatedOn() {
           padding: "6px 8px",
         }}
       >
-        Updated on Jan 31, 2026
+        Updated on Feb 6, 2026
       </span>
     </div>
   );

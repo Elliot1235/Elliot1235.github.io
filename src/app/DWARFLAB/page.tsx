@@ -24,39 +24,128 @@ type Feature = {
 ------------------------------ */
 
 const FEATURES: Feature[] = [
+
+
   {
     tag: "Shooting interface 3.0",
     sections: [
       {
-        title: "A redesigned shooting experience",
-        text:
-          "Led the redesign of the Shooting Interface 3.0, focusing on clarity, faster access to core actions, and reduced cognitive load during observation sessions.",
-        image: "/images/image1.1.png",
+        custom: (
+        <div>
+          <h4
+            className="text-2xl font-semibold mb-4 mt-10"
+            style={{ color: "#000000" }}
+          >
+            A redesigned shooting experience
+          </h4>
+
+          <p className="text-base leading-relaxed text-slate-800 mt-3">
+            <strong>Context:</strong> 
+          </p>
+
+          <p className="text-base leading-relaxed text-slate-800 mt-3">
+            When I joined DWARFLAB, one thing became clear very quickly: the app was hard to learn. Astrophotography already has a natural learning barrier, but the product itself made it even harder. The interface was complex, the operations were unforgiving, and beginners often didn’t know where to start or what to do next. This usually led to hesitation, repeated mistakes, and a strong sense of frustration. Over time, user feedback kept pointing to the same feeling — the product was powerful, but intimidating and difficult to approach.
+          </p>
+
+          <p className="text-base leading-relaxed text-slate-800 mt-3">
+            <strong>Approach:</strong> 
+          </p>
+
+          <p className="text-base leading-relaxed text-slate-800 mt-3">
+            People often said the app was “not user-friendly,” but that description was vague and didn’t really explain the problem. To understand it properly, I went through the full user journey and mapped out the structure of the system. What I found was a deeply layered interface with long navigation paths and tightly connected features. Core actions were buried, advanced options were mixed with basic ones, and users had to think too much just to complete simple tasks.
+          </p>
+
+          <p className="text-base leading-relaxed text-slate-800 mt-3">
+            Together with the product and design teams, we started from real usage scenarios rather than existing feature structures. The goal was to make core actions easier to reach, reduce unnecessary decision-making, and separate advanced capabilities from everyday shooting tasks. Instead of adding more guidance on top of a complex system, we focused on simplifying the structure itself. This process led to a full redesign of the shooting interface, not just in how it looked, but in how it worked.
+          </p>
+
+          <p className="text-base leading-relaxed text-slate-800 mt-3">
+            <strong>Impact:</strong> 
+          </p>
+
+          <p className="text-base leading-relaxed text-slate-800 mt-3">
+            The new structure made the system easier to understand and navigate. No third-level menus, core shooting actions became more direct, advanced features were clearly separated, and the overall flow felt lighter and more intuitive. Beginners could start without feeling overwhelmed, while experienced users could still work efficiently. The result is a shooting experience that is easier to learn, faster to operate, and structurally scalable for future evolution.
+          </p>
+
+          <img src="/images/image1.1.png" alt="Shooting Interface 3.0" className="mt-4 rounded-md shadow-md" />
+          
+          <img src="/images/image1.1.1.png" alt="Shooting Interface 3.0" className="mt-4 rounded-md shadow-md" />
+        </div>
+        ),
       },
     ],
   },
-  {
-    tag: "Mosaic",
-    sections: [
-      {
-        title: "Wide-field imaging through smart mosaics",
-        text:
-          "Enabled mosaic shooting to capture large celestial targets by intelligently stitching multiple frames while minimizing total shooting time.",
-        image: "/images/image_mosaic.png",
-      },
-    ],
-  },
+  
+  
+
   {
     tag: "Dark frame 2.0",
     sections: [
       {
-        title: "Smarter calibration with Dark Frame 2.0",
-        text:
-          "Upgraded the dark frame calibration workflow to reduce noise more efficiently and improve usability for beginners.",
-        image: "/images/image_dark.png",
+        custom: (
+        <div>
+          <h4
+            className="text-2xl font-semibold mb-4 mt-10"
+            style={{ color: "#000000" }}
+          >
+            A separated advanced feature
+          </h4>
+
+          <p className="text-base leading-relaxed text-slate-800 mt-3">
+            This is a concrete example of how we reduced users’ cognitive demand. On the left side of the figure is the old dark-frame shooting interface. Dark-frame capture and normal astrophotography shared the same start button, surrounded by many unrelated controls and visual elements. This made the logic difficult for users to understand, and at the same time forced developers to handle complex states such as disabling irrelevant functions, managing conditional prompts, and maintaining edge-case logic.
+          </p>
+
+          <p className="text-base leading-relaxed text-slate-800 mt-3">
+            On the right is the redesigned, standalone dark-frame module. It is clean, focused, and efficient, designed specifically for a single purpose. The interface adapts naturally to both portrait and landscape orientations. By separating it from the core shooting flow, the feature became easier to understand, easier to use, and easier to maintain—both for users and for the system itself.
+          </p>
+
+          <img src="/images/image_dark.png" alt="Shooting Interface 3.0" className="mt-4 rounded-md shadow-md" />
+          
+        </div>
+        ),
       },
     ],
   },
+
+        
+        
+  {
+    tag: "Mosaic",
+    sections: [
+      {
+        custom: (
+        <div>
+          <h4
+            className="text-2xl font-semibold mb-4 mt-10"
+            style={{ color: "#000000" }}
+          >
+            Compromise is not the finish line
+          </h4>
+
+          <p className="text-base leading-relaxed text-slate-800 mt-3">
+            Working with different stakeholders has always helped me build better solutions. Collaboration brings perspective and balance. Astro Mosaic, a space-panorama style project, was my first fully independent product, and I took this seriously. I listened to many voices — from algorithm engineers, software engineers, and UI designers — and adjusted the product direction to ensure the project could be delivered on time.
+          </p>
+
+          <p className="text-base leading-relaxed text-slate-800 mt-3">
+            The result wasn’t bad. The system worked, the project shipped, and everything was technically functional. But it was also unremarkable. There were small friction points everywhere, each solved with a temporary “patch.” The product was usable, but it didn’t feel complete.
+          </p>
+
+          <p className="text-base leading-relaxed text-slate-800 mt-3">
+            These unresolved issues stayed with me. I kept reflecting on them until one day I remembered a requirement a software engineer had once called “impossible.” From his technical perspective, he was right. But from a product perspective, the conflict itself wasn’t real. The two features didn’t actually need to work at the same time — they only needed to appear available through the UI. By restructuring the interaction logic, the contradiction disappeared. That moment reshaped how I see compromise. I realized that compromise is sometimes not a solution, but a signal that the problem hasn’t been framed correctly.
+          </p>
+
+          <img src="/images/image_mosaic.png" alt="Shooting Interface 3.0" className="max-w-full max-h-[420px] object-contain rounded-md shadow-md mx-auto block" />
+          
+        </div>
+        ),
+      },
+    ],
+  },      
+  
+
+
+
+
   {
     tag: "Post-processing",
     sections: [
@@ -74,52 +163,71 @@ const FEATURES: Feature[] = [
       },
     ],
   },
+
+
+
+
+
+
+
   {
     tag: "Equatorial alignment",
     sections: [
       {
-        title: "Equation mode for precise calibration",
+        title: "Intuitive design for setting EQ mode",
         text:
-          "Improved EQ alignment workflow to make polar alignment faster and easier for beginners while keeping precision for experienced users.",
+          "We replaced the original flat, static visuals with a 3D animated guidance system to help users set up EQ mode. The old interface often confused users about what to rotate: whether to rotate the telescope body or the tripod, leading to hesitation and errors. The new animation shows exactly what to adjust and how to do it, making the operation intuitive and significantly improving the success rate of EQ mode setup.",
         video: "/images/EQ.mp4", // ✅ video instead of image
       },
     ],
   },
+
+
+
+
+
+
   {
     tag: "DWARF mini",
     sections: [
       {
         title: "Defining the DWARF mini experience",
         text:
-          "Contributed to the product definition and experience design of DWARF mini, focusing on portability, approachability, and cost efficiency.",
+          "Beyond my role as a software product manager, I was also involved as one of the product owners of the new-generation compact product, DWARF mini. I contributed to its product definition and experience design, with a clear focus on portability, approachability, and cost efficiency. We intentionally removed high-end configurations and introduced more beginner-friendly features, while placing strong emphasis on durability and reliability, because making something small is often harder than making it big. This vision shaped The World’s Smallest Smart Telescope. ",
         image: "/images/image_mini_0.png",
       },
       {
-        title: "Defining the DWARF mini experience",
         text:
-          "Contributed to the product definition and experience design of DWARF mini, focusing on portability, approachability, and cost efficiency.",
+          "We introduced 360° pivot freedom, eliminating tracking dead zones and removing constraints caused by user placement. ",
         image: "/images/image_mini_1.png",
       },
       {
-        title: "Defining the DWARF mini experience",
         text:
-          "Contributed to the product definition and experience design of DWARF mini, focusing on portability, approachability, and cost efficiency.",
+          "We also integrated a built-in dark frame filter, an important astrophotography concept for reducing sensor color noise, allowing the system to automatically switch and capture dark frames without user awareness, making a complex concept invisible and effortless in everyday use.",
         image: "/images/image_mini_2.png",
       },
     ],
   },
+
+
+
+
+
+
+
+
   {
     tag: "And more",
     sections: [
     {
       custom: (
         <div>
-          <h3
+          <h4
             className="text-2xl font-semibold mb-4 mt-10"
             style={{ color: "#000000" }}
           >
             Interested in working together? Let’s talk.
-          </h3>
+          </h4>
 
 
 
@@ -265,7 +373,7 @@ export default function DwarfMiniPage() {
 
       {/* Normal title */}
       {section.title && (
-        <h3 className="text-lg font-semibold">{section.title}</h3>
+        <h4 className="text-2xl font-semibold">{section.title}</h4>
       )}
 
       {/* Text */}

@@ -7,6 +7,8 @@ const GoToTop = dynamic(() => import("@/components/GoToTop"), { ssr: false });
 const UpdatedOn = dynamic(() => import("@/components/UpdatedOn"), { ssr: false });
 const FaceGallery = dynamic(() => import("@/components/FaceGallery"), { ssr: false });
 const FlipCard = dynamic(() => import("@/components/FlipCard"), { ssr: false });
+const ExperienceCard = dynamic(() => import("@/components/ExperienceCard"), { ssr: false });
+
 
 export default function HomePage() {
   return (
@@ -37,139 +39,86 @@ export default function HomePage() {
       </section>
 
       
+
+
+
+
+
       {/* My experience */}
-      {/* My experience 1 */}
-      <section id="me-experience" className="relative z-10 px-4 py-8">
-        <div className="mx-auto w-[92vw] max-w-5xl">
-          <h2 id="experience-title" className="text-3xl font-semibold mb-8" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>My experience</h2>
+<section id="me-experience" className="relative z-10 px-4 py-8">
+  <div className="mx-auto w-[92vw] max-w-5xl">
 
-          <div style={{ background: 'rgb(246,246,246,0.8)', borderRadius: 10, padding: 28, position: 'relative', outline: '3px solid black', outlineOffset: '-1.5px' }}>
-            <div className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-start">
-              <div className="flex-shrink-0 flex flex-col gap-4">
-                <div style={{ width: 256, height: 176, padding: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <img src="/images/phone.png" alt="phone" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: 6 }} />
-                </div>
-                <div style={{ width: 256, height: 176, padding: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <img src="/images/dwarfmini.png" alt="DWARF Mini" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: 6 }} />
-                </div>
-              </div>
+    <h2
+      className="text-3xl font-semibold mb-8"
+      style={{ color: "var(--accent-color-dark, #d2cfc6)" }}
+      id="experience-title"
+    >
+      My experience
+    </h2>
 
-              <div className="flex-1">
-                <h3 className="text-xl font-semibold" style={{ color: '#252525'}}>Software Leadership (App v3.1.2 → v3.3.0)</h3>
-                <p className="mt-3 text-base leading-relaxed text-slate-800">Led the software team through multiple release cycles, driving the product from version 3.1.2 to 3.3.0. Guided by user needs, I owned solution design for IoT devices within a DevOps-driven development loop. I partnered closely with UI/UX designers to improve usability and reduce the learning curve, and worked cross-functionally with embedded and frontend engineers to maximize delivery efficiency and overall product quality.</p>
+    <div className="space-y-8">
 
-                <h3 className="text-xl font-semibold mt-6" style={{ color: '#252525'}}>New Product Development – DWARF Mini</h3>
-                <p className="mt-3 text-base leading-relaxed text-slate-800">Led the product definition of DWARF Mini, the world&apos;s smallest smart telescope. I conducted user research to identify core pain points, proposed feature improvements, and balanced product positioning across the existing lineup. Key contributions included features such as a built-in dark filter and a 360° horizontal rotation mechanism.</p>
+      {/* Experience 1 */}
+      <ExperienceCard
+        title1="Software Leadership (App v3.1.2 → v3.3.0)"
+        desc1="Led the software team through multiple release cycles, driving the product from version 3.1.2 to 3.3.0. Guided by user needs, I owned solution design for IoT devices within a DevOps-driven development loop. I partnered closely with UI/UX designers to improve usability and reduce the learning curve, and worked cross-functionally with embedded and frontend engineers to maximize delivery efficiency and overall product quality."
+        title2="New Product Development – DWARF Mini"
+        desc2="Led the product definition of DWARF Mini, the world's smallest smart telescope. I conducted user research to identify core pain points, proposed feature improvements, and balanced product positioning across the existing lineup. Key contributions included features such as a built-in dark filter and a 360° horizontal rotation mechanism."
+        images={[
+          { src: "/images/phone.png", alt: "phone" },
+          { src: "/images/dwarfmini.png", alt: "dwarfmini" }
+        ]}
+        logo="/images/LOGODWARFLAB.svg"
+        role="Product Manager"
+        year="2024–2025"
+        link="/DWARFLAB"
+      />
 
-                <div style={{ height: 48 }} />
-              </div>
-            </div>
-            {/* bottom-left: logo + Product Manager */}
-            <div style={{ position: 'absolute', left: 20, bottom: 18, display: 'flex', alignItems: 'center', gap: 16 }}>
-              <img src="/images/LOGODWARFLAB.svg" alt="Dwarf Lab" style={{ height: 18 }} />
-              <span className="text-xl font-semibold" style={{ color: '#000000' }}>Product Manager</span>
-              <span className="text-lg font-semibold" style={{ color: '#000000' }}>2024-2025</span>
-            </div>
+      {/* Experience 2 */}
+      <ExperienceCard
+        title1="Applied Research on Low-Code Platforms"
+        desc1="Designed an LSP-based evaluation framework aligned with ISO/IEC 9126 to assess low-code platforms across functionality, usability, and robustness. Conducted a comparative study of Mendix and OutSystems, combining performance testing with usability analysis to provide evidence-based platform selection guidance."
+        images={[
+          { src: "/images/KPMG.png", alt: "KPMG" }
+        ]}
+        logo="/images/LOGOKPMG.svg"
+        role="Research Intern"
+        year="2024"
+      />
 
-            {/* bottom-right: Learn more button */}
-            <div style={{ position: 'absolute', right: 20, bottom: 14 }}>
-              <Link href="/DWARFLAB">
-                <button
-                  aria-label="Learn more"
-                  className="px-4 py-2 rounded-full border-2 border-black bg-[rgb(246,246,246,0.8)] text-black transition-all duration-150 hover:bg-black hover:text-white hover:scale-[1.05] active:scale-[0.95] focus:outline-none"
-                >
-                  Learn more
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Experience 3 */}
+      <ExperienceCard
+        title1="ICT4D Project – Agricultural Communication Platform"
+        desc1="Designed and prototyped a communication platform for farmers in Burkina Faso to sell non-timber forest products using feature phones. The project explored how digital services could work under low-connectivity and non-smartphone constraints."
+        title2=""
+        desc2="I led system design and implementation, creating UML and activity diagrams and developing a VoiceXML-based voice application for feature phone users, alongside a web-based information platform. I built user-facing interfaces with HTML, CSS, and JavaScript, and implemented backend services using JSP, Servlet, and MySQL."
+        images={[
+          { src: "/images/ICT4D.png", alt: "ICT4D" }
+        ]}
+        logo="/images/LOGOICT4D.svg"
+        role="Product Design & Engineering (Course Project)"
+        year="2023"
+      />
 
-      {/* My experience 2 */}
-      <section className="relative z-10 px-4 py-8">
-        <div className="mx-auto w-[92vw] max-w-5xl">
-          <div style={{ background: 'rgb(246,246,246,0.8)', borderRadius: 10, padding: 28, position: 'relative', outline: '3px solid black', outlineOffset: '-1.5px' }}>
-            <div className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-start">
-              <div className="flex-shrink-0">
-                <div style={{ width: 256, height: 176, padding: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <img src="/images/KPMG.png" alt="KPMG" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: 6 }} />
-                </div>
-              </div>
+    </div>
+  </div>
+</section>
 
-              <div className="flex-1">
-                <h3 className="text-xl font-semibold" style={{ color: '#252525'}}>Applied Research on Low-Code Platforms</h3>
-                <p className="mt-3 text-base leading-relaxed text-slate-800">Designed an LSP-based evaluation framework aligned with ISO/IEC 9126 to assess low-code platforms across functionality, usability, and robustness. Conducted a comparative study of Mendix and OutSystems, combining performance testing with usability analysis to provide evidence-based platform selection guidance.</p>
 
-                <div style={{ height: 48 }} />
-              </div>
-            </div>
 
-            {/* bottom-left: KPMG logo + role */}
-            <div style={{ position: 'absolute', left: 20, bottom: 18, display: 'flex', alignItems: 'center', gap: 16 }}>
-              <img src="/images/LOGOKPMG.svg" alt="KPMG" style={{ height: 30 }} />
-              <span className="text-xl font-semibold" style={{ color: '#000000' }}>Research Intern</span>
-              <span className="text-lg font-semibold" style={{ color: '#000000' }}>2024</span>
-            </div>
 
-            {/* bottom-right: Learn more button (transparent) */}
-            <div style={{ position: 'absolute', right: 20, bottom: 14 }}>
-              <Link href="/KPMG">
-                <button
-                  aria-label="Learn more"
-                  className="px-4 py-2 rounded-full border-2 border-black bg-[rgb(246,246,246,0.8)] text-black transition-all duration-150 hover:bg-black hover:text-white hover:scale-[1.05] active:scale-[0.95] focus:outline-none"
-                >
-                  Learn more
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* My experience 3 */}
-      <section className="relative z-10 px-4 py-8">
-        <div className="mx-auto w-[92vw] max-w-5xl">
-          <div style={{ background: 'rgb(246,246,246,0.8)', borderRadius: 10, padding: 28, position: 'relative', outline: '3px solid black', outlineOffset: '-1.5px' }}>
-            <div className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-start">
-              <div className="flex-shrink-0">
-                <div style={{ width: 256, height: 280, padding: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <img src="/images/ICT4D.png" alt="KPMG" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: 6 }} />
-                </div>
-              </div>
 
-              <div className="flex-1">
-                <h3 className="text-xl font-semibold" style={{ color: '#252525'}}>ICT4D Project – Agricultural Communication Platform</h3>
-                <p className="mt-3 text-base leading-relaxed text-slate-800">Designed and prototyped a communication platform for farmers in Burkina Faso to sell non-timber forest products using feature phones. The project explored how digital services could work under low-connectivity and non-smartphone constraints.</p>
 
-                <p className="mt-3 text-base leading-relaxed text-slate-800">I led system design and implementation, creating UML and activity diagrams and developing a VoiceXML-based voice application for feature phone users, alongside a web-based information platform. I built user-facing interfaces with HTML, CSS, and JavaScript, and implemented backend services using JSP, Servlet, and MySQL. The work followed a DevOps-style iteration loop covering design, testing, and deployment in a simulated production environment.</p>
 
-                <div style={{ height: 48 }} />
-              </div>
-            </div>
-            {/* bottom-left: KPMG logo + role */}
-            <div style={{ position: 'absolute', left: 20, bottom: 18, display: 'flex', alignItems: 'center', gap: 16 }}>
-              <img src="/images/LOGOICT4D.svg" alt="Dwarf Lab" style={{ height: 40 }} />
-              <span className="text-xl font-semibold" style={{ color: '#000000' }}>Product Design & Engineering (Course Project)</span>
-              <span className="text-lg font-semibold" style={{ color: '#000000' }}>2023</span>
-            </div>
 
-            {/* bottom-right: Learn more button (transparent) */}
-            <div style={{ position: 'absolute', right: 20, bottom: 14 }}>
-              <Link href="/ICT4D">
-                <button
-                  aria-label="Learn more"
-                  className="px-4 py-2 rounded-full border-2 border-black bg-[rgb(246,246,246,0.8)] text-black transition-all duration-150 hover:bg-black hover:text-white hover:scale-[1.05] active:scale-[0.95] focus:outline-none"
-                >
-                  Learn more
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      
+
+
+
+
+
+
+
       
       {/* Things I am good at */}
       <section id="skills" className="relative z-10 px-4 py-16">

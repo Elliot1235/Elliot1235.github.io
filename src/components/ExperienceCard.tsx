@@ -1,49 +1,129 @@
-"use client";
+import Link from "next/link";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
-import type { Experience } from "@/data/roles";
-
-type Props = {
-  experience: Experience;
+type ImageItem = {
+  src: string;
+  alt: string;
 };
 
-export function ExperienceCard({ experience }: Props) {
-  const [open, setOpen] = useState(false);
+type ExperienceCardProps = {
+  title1: string;
+  desc1: string;
+  title2?: string;
+  desc2?: string;
+  images: ImageItem[];
+  logo: string;
+  role: string;
+  year: string;
+  link?: string;
+};
 
+export default function ExperienceCard({
+  title1,
+  desc1,
+  title2,
+  desc2,
+  images,
+  logo,
+  role,
+  year,
+  link
+}: ExperienceCardProps) {
   return (
-    <div className="flex w-full gap-4 rounded-2xl bg-white/10 backdrop-blur-sm p-4 shadow-sm">
-      <div className="h-16 w-16 flex-shrink-0 rounded-xl bg-gradient-to-br from-emerald-200 to-emerald-400" />
-      <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-slate-900">
-          {experience.title}
-        </p>
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="mt-2 text-sm font-semibold text-sky-600 hover:text-sky-700 focus:outline-none"
-        >
-          {open ? "show less" : "learn more"}
-        </button>
-        <AnimatePresence initial={false}>
-          {open && (
-            <motion.div
-              key="content"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="overflow-hidden w-full"
+    <div
+      style={{
+        background: "rgb(246,246,246,0.8)",
+        borderRadius: 10,
+        padding: 28,
+        position: "relative",
+        outline: "3px solid black",
+        outlineOffset: "-1.5px"
+      }}
+      className="pb-24 md:pb-16"
+    >
+      <div className="flex flex-col gap-8 md:flex-row-reverse">
+
+        {/* Desktop images */}
+        <div className="hidden md:flex flex-shrink-0 flex-col gap-4">
+          {images.map((img, i) => (
+            <div
+              key={i}
+              className="w-[256px] h-[176px] flex items-center justify-center"
             >
-              <p className="mt-2 text-sm text-slate-700">
-                {experience.details}
-              </p>
-            </motion.div>
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="max-w-full max-h-full object-contain rounded"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Text */}
+        <div className="flex-1 text-sm md:text-base">
+
+          <h3 className="text-xl font-semibold text-[#252525]">
+            {title1}
+          </h3>
+
+          <p className="mt-3 leading-relaxed text-slate-800">
+            {desc1}
+          </p>
+
+          {/* Mobile image after first section */}
+          {images[0] && (
+            <div className="mt-4 flex justify-center md:hidden">
+              <img
+                src={images[0].src}
+                alt={images[0].alt}
+                className="max-w-[260px] w-full object-contain rounded"
+              />
+            </div>
           )}
-        </AnimatePresence>
+
+          {title2 && (
+            <>
+              <h3 className="text-xl font-semibold mt-6 text-[#252525]">
+                {title2}
+              </h3>
+
+              <p className="mt-3 leading-relaxed text-slate-800">
+                {desc2}
+              </p>
+
+              {/* Mobile image 2 */}
+              {images[1] && (
+                <div className="mt-4 flex justify-center md:hidden">
+                  <img
+                    src={images[1].src}
+                    alt={images[1].alt}
+                    className="max-w-[260px] w-full object-contain rounded"
+                  />
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Bottom */}
+      <div className="mt-6 flex flex-col gap-3 md:block">
+
+        <div className="flex flex-wrap items-center gap-3 md:absolute md:left-5 md:bottom-4">
+          <img src={logo} alt="logo" className="h-[22px]" />
+          <span className="text-lg font-semibold text-black">{role}</span>
+          <span className="text-base font-semibold text-black">{year}</span>
+        </div>
+
+        {link && (
+          <div className="self-start md:absolute md:right-5 md:bottom-4">
+            <Link href={link}>
+              <button className="px-4 py-2 rounded-full border-2 border-black bg-[rgb(246,246,246,0.8)] text-black transition-all duration-150 hover:bg-black hover:text-white hover:scale-[1.05] active:scale-[0.95]">
+                Learn more
+              </button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
 }
-
-
