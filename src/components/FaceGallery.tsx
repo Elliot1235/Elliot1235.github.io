@@ -45,7 +45,7 @@ export default function FaceGallery(): JSX.Element {
       <div className="mx-auto w-[85vw] max-w-5xl">
         <h2
           className="text-3xl font-semibold mb-6"
-          style={{ color: "var(--accent-color-dark, #d2cfc6)" }}
+          style={{ color: "var(--accent-color-dark, #E2A391)" }}
         >
           Put a face to the name
         </h2>

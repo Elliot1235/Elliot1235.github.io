@@ -1,7 +1,8 @@
+import Background from "@/components/background";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
-const AnimatedSvgBackground = dynamic(() => import("@/components/AnimatedSvgBackground"), { ssr: false });
+{/*const AnimatedSvgBackground = dynamic(() => import("@/components/AnimatedSvgBackground"), { ssr: false });  */}
 const StickyName = dynamic(() => import("@/components/StickyName"), { ssr: false });
 const GoToTop = dynamic(() => import("@/components/GoToTop"), { ssr: false });
 const UpdatedOn = dynamic(() => import("@/components/UpdatedOn"), { ssr: false });
@@ -20,7 +21,9 @@ export default function HomePage() {
     <main className="relative min-h-screen">
       {/* Fullscreen SVG background (layered radial gradients with subtle motion). 
       {/* <AnimatedSvgBackground />  */}
-      <SoftNebulaBackground />
+
+        <SoftNebulaBackground />
+      
 
 
       {/* Hero (fullscreen). */}
@@ -36,11 +39,11 @@ export default function HomePage() {
 
         <div className="mt-16 max-w-5xl text-xl leading-relaxed text-slate-900 md:text-2xl" style={{ opacity: 'var(--hero-text-opacity, 1)', transition: 'opacity 160ms linear' }}>
           <p>
-            I am a <span style={{ color: 'var(--accent-color-dark, #EEB665)', fontWeight: 600 }}>product manager</span> who balances user needs with delivery.
+            I am a <span style={{ color: 'var(--accent-color-dark, #E2A391)', fontWeight: 600 }}>product manager</span> who balances user needs with delivery.
           </p>
           <p className="mt-6">
             My goal is to design products that feel pleasant to users, where the
-            experience is <span style={{ color: 'var(--accent-color-dark, #EEB665)', fontWeight: 600 }}>frictionless</span> <span style={{ color: 'var(--accent-color-dark, #273976)', fontWeight: 600 }}>and</span> <span style={{ color: 'var(--accent-color-dark, #273976)', fontWeight: 600 }}>intuitive</span> across both software and hardware.
+            experience is <span style={{ color: 'var(--accent-color-dark, #E2A391)', fontWeight: 600 }}>frictionless</span> <span style={{ color: 'var(--accent-color-dark, #E2A391)', fontWeight: 600 }}>and</span> <span style={{ color: 'var(--accent-color-dark, #E2A391)', fontWeight: 600 }}>intuitive</span> across both software and hardware.
           </p>
         </div>
       </section>
@@ -57,7 +60,7 @@ export default function HomePage() {
 
     <h2
       className="text-3xl font-semibold mb-8"
-      style={{ color: "var(--accent-color-dark, #EEB665)" }}
+      style={{ color: "var(--accent-color-dark, #E2A391)" }}
       id="experience-title"
     >
       My experience
@@ -130,7 +133,7 @@ export default function HomePage() {
       {/* Things I am good at */}
       <section id="skills" className="relative z-10 px-4 py-16">
         <div className="mx-auto w-[92vw] max-w-5xl">
-          <h2 className="text-3xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>Things I am good at</h2>
+          <h2 className="text-3xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #E2A391)' }}>Things I am good at</h2>
 
           <div className="max-w-[880px]">
             <p className="text-base leading-relaxed text-slate-900">
@@ -175,7 +178,7 @@ export default function HomePage() {
       {/* About me */}
       <section id="about" className="relative z-10 px-4 py-16">
         <div className="mx-auto w-[92vw] max-w-5xl">
-          <h2 className="text-3xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>About me</h2>
+          <h2 className="text-3xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #E2A391)' }}>About me</h2>
 
           <div className="mx-auto max-w-[680px]">
             <div className="text-slate-800 text-base leading-[1.75] space-y-6 text-center">
@@ -185,7 +188,7 @@ export default function HomePage() {
 
               <p>As digital products became inseparable from daily life, my focus evolved. Rather than measuring success solely by screen time or engagement, I care more about the value a product brings:</p>
 
-              <div className="mt-4 space-y-4 text-base text-slate-400">
+              <div className="mt-4 space-y-4 text-base text-slate-600">
                 <p>Is the experience pleasant?</p>
                 <p>Does the user journey feel intuitive?</p>
                 <p>Does it genuinely make life easier or better?</p>
@@ -203,7 +206,7 @@ export default function HomePage() {
         {/* Let&apos;s talk / contact */}
         <section id="contact" className="relative z-10 px-4 py-16">
           <div className="mx-auto w-[85vw] max-w-5xl">
-              <h2 className="text-3xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #d2cfc6)' }}>Let&apos;s talk</h2>
+              <h2 className="text-3xl font-semibold mb-4" style={{ color: 'var(--accent-color-dark, #E2A391)' }}>Let&apos;s talk</h2>
               <p className="text-base leading-relaxed text-slate-800">
                 <a
                   href="https://www.linkedin.com/in/elliot-luo-7181ab254/"

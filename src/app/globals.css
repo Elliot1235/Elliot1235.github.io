@@ -2,19 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
   @apply text-slate-900 antialiased;
-  /* More visible layered gradient fallback so the homepage matches the design.
-     This will be visible before the canvas-based procedural gradient initializes. */
-  background-color: #f5e0d0;
-  background-image:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6), rgba(255,255,255,0)),
-    radial-gradient(circle at 80% 0%, rgba(255,230,210,0.5), rgba(255,230,210,0)),
-    linear-gradient(180deg, #e9e7f6 0%, #f7d7c0 55%, #f2b48b 100%);
-  background-repeat: no-repeat;
-  background-size: 140% 140%, 160% 160%, cover;
-  background-position: 50% 50%, 60% 30%, center;
-  background-attachment: fixed, fixed, fixed;
+  background: #f7f7f7;
 }
 
 .paper-card {

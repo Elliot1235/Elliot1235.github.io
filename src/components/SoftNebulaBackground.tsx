@@ -18,12 +18,12 @@ export default function SoftNebulaBackground() {
     return () => window.removeEventListener("mousemove", move);
   }, []);
 
-  // 漂移惯性
+  // 惯性漂移（云层跟随）
   useEffect(() => {
     const interval = setInterval(() => {
       setDrift(prev => ({
-        x: prev.x + (mouse.x - 0.5 - prev.x) * 0.03,
-        y: prev.y + (mouse.y - 0.5 - prev.y) * 0.03,
+        x: prev.x + (mouse.x - 0.5 - prev.x) * 0.02,
+        y: prev.y + (mouse.y - 0.5 - prev.y) * 0.02,
       }));
     }, 30);
     return () => clearInterval(interval);
@@ -32,71 +32,62 @@ export default function SoftNebulaBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
 
-      {/* Impressionist sky */}
+      {/* Twilight base sky */}
       <div
         className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(circle at 60% 30%, #E7C7A8 0%, transparent 35%),
-            radial-gradient(circle at 30% 20%, #C9D7E0 0%, transparent 50%),
-            radial-gradient(circle at 50% 80%, #9FB7C9 0%, transparent 60%),
+            radial-gradient(circle at 70% 30%, #F3D6BF 0%, transparent 45%),
+            radial-gradient(circle at 30% 20%, #C9D7E0 0%, transparent 55%),
+            radial-gradient(circle at 50% 85%, #B7B9D8 0%, transparent 65%),
             #ECEAE6
           `,
         }}
       />
 
-      {/* 色块云层 */}
-      <PaintCloud color="#C9D7E0" size={1400} top="5%" left="10%" drift={drift} depth={20} duration={60}/>
-      <PaintCloud color="#E4E1D9" size={1200} top="55%" left="60%" drift={drift} depth={40} duration={70}/>
-      <PaintCloud color="#C3C4DA" size={1300} top="35%" left="30%" drift={drift} depth={30} duration={65}/>
-      <PaintCloud color="#EFE5DB" size={1100} top="70%" left="5%" drift={drift} depth={25} duration={55}/>
+      {/* 云层 */}
+      <PaintCloud color="#BFD3E6" size={1400} top="5%" left="10%" drift={drift} depth={20} duration={60}/>
+      <PaintCloud color="#E8D6C6" size={1200} top="55%" left="60%" drift={drift} depth={35} duration={70}/>
+      <PaintCloud color="#B7B9D8" size={1300} top="35%" left="30%" drift={drift} depth={28} duration={65}/>
+      <PaintCloud color="#F2E4D6" size={1100} top="70%" left="5%" drift={drift} depth={24} duration={55}/>
 
-      {/* 日出暖光 */}
+      {/* 空气暖光 */}
       <div
-        className="absolute inset-0 glow"
+        className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(circle at ${65 + drift.x * 15}% ${40 + drift.y * 15}%,
-            rgba(231,199,168,0.25),
+            radial-gradient(circle at ${65 + drift.x * 10}% ${40 + drift.y * 10}%,
+            rgba(255,210,170,0.22),
             transparent 60%)
           `,
+          mixBlendMode: "soft-light",
         }}
       />
 
-      {/* 笔触纹理 */}
-      <div className="brushTexture" />
+      {/* subtle noise */}
+      <div className="noiseTexture" />
 
       <style jsx>{`
-        .paintCloud {
+        .cloud {
           position: absolute;
           border-radius: 45% 55% 60% 40% / 55% 45% 60% 40%;
-          filter: blur(120px);
-          opacity: 0.45;
+          filter: blur(70px);
+          opacity: 0.65;
           animation: breathing ease-in-out infinite;
+          mix-blend-mode: soft-light;
         }
 
         @keyframes breathing {
-          0% { transform: scale(1); opacity: 0.42; }
-          50% { transform: scale(1.04); opacity: 0.47; }
-          100% { transform: scale(1); opacity: 0.42; }
+          0% { transform: scale(1); }
+          50% { transform: scale(1.035); }
+          100% { transform: scale(1); }
         }
 
-        .glow {
-          animation: glowBreath 70s ease-in-out infinite;
-        }
-
-        @keyframes glowBreath {
-          0% { opacity: 0.9; }
-          50% { opacity: 1; }
-          100% { opacity: 0.9; }
-        }
-
-        /* 关键：笔触纹理 */
-        .brushTexture {
+        .noiseTexture {
           position: absolute;
           inset: 0;
-          opacity: 0.06;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+          opacity: 0.05;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
           mix-blend-mode: overlay;
         }
       `}</style>
@@ -107,16 +98,25 @@ export default function SoftNebulaBackground() {
 function PaintCloud({ color, size, top, left, drift, depth, duration }: any) {
   return (
     <div
-      className="paintCloud"
       style={{
-        width: size,
-        height: size,
+        position: "absolute",
         top,
         left,
-        background: color,
-        transform: `translate(${drift.x * depth}px, ${drift.y * depth}px)`,
-        animationDuration: `${duration}s`,
+        transform: `translate(${drift.x * depth}px, ${drift.y * depth}px)`
       }}
-    />
+    >
+      <div
+        style={{
+          width: size,
+          height: size,
+          background: color,
+          borderRadius: "50%",
+          filter: "blur(120px)",
+          opacity: 0.5,
+          animation: `breathing ${duration}s ease-in-out infinite`
+        }}
+      />
+    </div>
   );
 }
+
