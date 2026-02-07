@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { roles } from "@/data/roles";
-import { ExperienceCard } from "./ExperienceCard";
+import ExperienceCard from "./ExperienceCard";
+
 
 export function RolePanels() {
   // Only keep the Product Manager panel visible on the page.
