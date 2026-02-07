@@ -1,6 +1,11 @@
+
+
+
+
 "use client";
 
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 /* -----------------------------
    Types
@@ -11,7 +16,7 @@ type Section = {
   text?: string;
   image?: string;
   video?: string;
-  custom?: React.ReactNode;  
+  custom?: React.ReactNode;
 };
 
 type Feature = {
@@ -20,7 +25,7 @@ type Feature = {
 };
 
 /* -----------------------------
-   Data
+   Data（你的 FEATURES 原样保留）
 ------------------------------ */
 
 const FEATURES: Feature[] = [
@@ -291,6 +296,11 @@ const FEATURES: Feature[] = [
   },
 ];
 
+
+
+
+
+
 /* -----------------------------
    Page component
 ------------------------------ */
@@ -300,11 +310,18 @@ export default function DwarfMiniPage() {
 
   const current = FEATURES[selected];
 
+
   const goNext = () => {
-    if (selected < FEATURES.length - 1) {
-      setSelected((s) => s + 1);
-    }
-  };
+  if (selected < FEATURES.length - 1) {
+    setSelected((s) => s + 1);
+
+    // scroll to top
+    window.scrollTo({
+      top: 0,
+      behavior: "auto", 
+    });
+  }
+};
 
   return (
     <main
@@ -362,55 +379,67 @@ export default function DwarfMiniPage() {
             })}
           </div>
 
-          {/* Sections */}
+          {/* Sections with animation */}
           <div className="mx-auto max-w-[680px] text-left">
-            <div className="space-y-14">
-  {current.sections.map((section, idx) => (
-    <div key={idx} className="space-y-4">
 
-      {/* Custom content */}
-      {section.custom && section.custom}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selected}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+              >
+                <div className="space-y-14">
+                  {current.sections.map((section, idx) => (
+                    <div key={idx} className="space-y-4">
 
-      {/* Normal title */}
-      {section.title && (
-        <h4 className="text-2xl font-semibold">{section.title}</h4>
-      )}
+                      {/* Custom content */}
+                      {section.custom && section.custom}
 
-      {/* Text */}
-      {section.text && (
-        <p className="text-base leading-relaxed text-slate-800">
-          {section.text}
-        </p>
-      )}
+                      {/* Title */}
+                      {section.title && (
+                        <h4 className="text-2xl font-semibold">
+                          {section.title}
+                        </h4>
+                      )}
 
-      {/* Image */}
-      {section.image && (
-        <div className="w-full flex justify-center">
-          <img
-            src={section.image}
-            alt={section.title}
-            className="max-w-full max-h-[420px] object-contain rounded-md shadow-md"
-          />
-        </div>
-      )}
+                      {/* Text */}
+                      {section.text && (
+                        <p className="text-base leading-relaxed text-slate-800">
+                          {section.text}
+                        </p>
+                      )}
 
-      {/* Video */}
-      {section.video && (
-        <div className="w-full flex justify-center">
-          <video
-            src={section.video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="max-w-full max-h-[420px] object-contain rounded-md shadow-md"
-          />
-        </div>
-      )}
-    </div>
-  ))}
-</div>
+                      {/* Image */}
+                      {section.image && (
+                        <div className="w-full flex justify-center">
+                          <img
+                            src={section.image}
+                            alt={section.title}
+                            className="max-w-full max-h-[420px] object-contain rounded-md shadow-md"
+                          />
+                        </div>
+                      )}
 
+                      {/* Video */}
+                      {section.video && (
+                        <div className="w-full flex justify-center">
+                          <video
+                            src={section.video}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="max-w-full max-h-[420px] object-contain rounded-md shadow-md"
+                          />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
 
             {/* Next button */}
             {selected < FEATURES.length - 1 && (
