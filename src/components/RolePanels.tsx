@@ -46,7 +46,19 @@ export function RolePanels() {
 
                 <div className="mt-4 flex-1 space-y-3">
                   {role.experiences.map((exp) => (
-                    <ExperienceCard key={exp.title} experience={exp} />
+                    <ExperienceCard
+                      key={exp.title1}
+  title1={exp.title1}
+  desc1={exp.desc1}
+  title2={exp.title2}
+  desc2={exp.desc2}
+  images={exp.images}
+  logo={exp.logo}
+  role={exp.role}
+  year={exp.year}
+  link={exp.link}
+/>
+
                   ))}
                 </div>
               </div>
