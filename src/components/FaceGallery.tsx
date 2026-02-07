@@ -1,42 +1,42 @@
 "use client";
 import React from "react";
 
-export default function FaceGallery(): JSX.Element {
+export default function FaceGallery({ lang = 'en' }: { lang?: 'en' | 'zh' }): JSX.Element {
   const images = [
     {
       src: "/images/qiu.jpg",
       type: "qiu",
-      caption: "Product iteration with Product Manager Qiu",
+      caption: lang === 'zh' ? "与产品经理邱的产品迭代" : "Product iteration with Product Manager Qiu",
     },
     {
       src: "/images/matisse.jpg",
       type: "cover",
-      caption: "A tribute to Matisse",
+      caption: lang === 'zh' ? "向马蒂斯致敬" : "A tribute to Matisse",
     },
     {
       src: "/images/draw.png",
       type: "square",
-      caption: "Drawing in a meeting",
+      caption: lang === 'zh' ? "会议中的速写" : "Drawing in a meeting",
     },
     {
       src: "/images/Depot.JPG",
       type: "square",
-      caption: "Always reimagining (Depot Museum)",
+      caption: lang === 'zh' ? "不断重新想象（Depot 博物馆）" : "Always reimagining (Depot Museum)",
     },
     {
       src: "/images/xiong.png",
       type: "square",
-      caption: "Collaborating closely with Xiong on UI/UX design",
+      caption: lang === 'zh' ? "与熊在 UI/UX 设计上紧密协作" : "Collaborating closely with Xiong on UI/UX design",
     },
     {
       src: "/images/Jumbo.jpg",
       type: "wide",
-      caption: "Worked as a stock clerk and cashier at Jumbo supermarket",
+      caption: lang === 'zh' ? "曾在 Jumbo 超市担任理货员和收银员" : "Worked as a stock clerk and cashier at Jumbo supermarket",
     },
     {
       src: "/images/Sky.JPG",
       type: "wide",
-      caption: "Immersing myself in the user’s environment and designing with empathy",
+      caption: lang === 'zh' ? "沉浸在用户环境中，带着同理心去设计" : "Immersing myself in the user’s environment and designing with empathy",
     },
   ];
 
@@ -47,7 +47,7 @@ export default function FaceGallery(): JSX.Element {
           className="text-3xl font-semibold mb-6"
           style={{ color: "var(--accent-color-dark, #E2A391)" }}
         >
-          Put a face to the name
+          {lang === 'zh' ? '给名字一个面孔' : 'Put a face to the name'}
         </h2>
 
         <div className="face-grid">

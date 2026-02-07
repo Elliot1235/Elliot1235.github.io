@@ -15,6 +15,7 @@ type ExperienceCardProps = {
   role: string;
   year: string;
   link?: string;
+  learnMoreText?: string;
 };
 
 export default function ExperienceCard({
@@ -27,6 +28,7 @@ export default function ExperienceCard({
   role,
   year,
   link
+  , learnMoreText = "Learn more"
 }: ExperienceCardProps) {
   return (
     <div
@@ -118,7 +120,7 @@ export default function ExperienceCard({
           <div className="self-start md:absolute md:right-5 md:bottom-4">
             <Link href={link}>
               <button className="px-4 py-2 rounded-full border-2 border-black bg-[rgb(246,246,246,0.8)] text-black transition-all duration-150 hover:bg-black hover:text-white hover:scale-[1.05] active:scale-[0.95]">
-                Learn more
+                {learnMoreText}
               </button>
             </Link>
           </div>

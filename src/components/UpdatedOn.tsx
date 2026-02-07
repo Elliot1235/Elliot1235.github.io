@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-export default function UpdatedOn() {
+export default function UpdatedOn({ lang = 'en' }: { lang?: 'en' | 'zh' }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -34,7 +34,7 @@ export default function UpdatedOn() {
           padding: "6px 8px",
         }}
       >
-        Updated on Feb 6, 2026
+        {lang === 'zh' ? '更新于 2026年2月6日' : 'Updated on Feb 6, 2026'}
       </span>
     </div>
   );

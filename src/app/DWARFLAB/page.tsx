@@ -5,6 +5,119 @@
 "use client";
 
 import React, { useState } from "react";
+
+// 简体中文翻译的 FEATURES（用于语言切换）
+const FEATURES_ZH: Feature[] = [
+  {
+    tag: "拍摄界面 3.0",
+    sections: [
+      {
+        custom: (
+          <div>
+            <h4 className="text-2xl font-semibold mb-4 mt-10" style={{ color: "#000000" }}>
+              重新设计的拍摄体验
+            </h4>
+
+            <p className="text-base leading-relaxed text-slate-800 mt-3"><strong>背景：</strong></p>
+            <p className="text-base leading-relaxed text-slate-800 mt-3">我加入 DWARFLAB 后很快发现：应用很难上手。天文摄影本身就有学习门槛，但产品本身让这一过程更艰难。界面复杂、操作不容错，初学者常常不知道从何开始，导致犹豫和重复错误，并产生强烈的挫败感。用户反馈长期指向同一问题——产品强大但令人望而步。</p>
+            <p className="text-base leading-relaxed text-slate-800 mt-3"><strong>方法：</strong></p>
+            <p className="text-base leading-relaxed text-slate-800 mt-3">我们从真实使用场景出发，而不是现有功能结构。目标是让核心操作更容易抵达，减少不必要的决策，将高级功能与日常拍摄任务分离。最终我们对拍摄界面进行了整体重构，既改变了视觉，也重塑了交互逻辑。</p>
+            <p className="text-base leading-relaxed text-slate-800 mt-3"><strong>影响：</strong></p>
+            <p className="text-base leading-relaxed text-slate-800 mt-3">新结构让系统更易理解与导航。核心操作更直接，高级选项被清晰隔离，整体流程更轻量直观。初学者不会被压垮，进阶用户仍能高效工作。</p>
+            <img src="/images/image1.1.png" alt="Shooting Interface 3.0" className="mt-4 rounded-md shadow-md" />
+            <img src="/images/image1.1.1.png" alt="Shooting Interface 3.0" className="mt-4 rounded-md shadow-md" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    tag: "暗帧 2.0",
+    sections: [
+      {
+        custom: (
+          <div>
+            <h4 className="text-2xl font-semibold mb-4 mt-10" style={{ color: "#000000" }}>一个独立的高级功能模块</h4>
+            <p className="text-base leading-relaxed text-slate-800 mt-3">这是我们如何降低用户认知负担的具体示例。旧的暗帧与常规拍摄共用同一启动按钮，周围混杂许多无关控件，导致逻辑难以理解。重设计后暗帧成为独立模块，更清晰易用且更容易维护。</p>
+            <img src="/images/image_dark.png" alt="Dark frame" className="mt-4 rounded-md shadow-md" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    tag: "马赛克",
+    sections: [
+      {
+        custom: (
+          <div>
+            <h4 className="text-2xl font-semibold mb-4 mt-10" style={{ color: "#000000" }}>折衷并非终点</h4>
+            <p className="text-base leading-relaxed text-slate-800 mt-3">与不同利益相关者合作帮助我构建更好的解决方案。Astro Mosaic 是我第一个完全独立负责的产品，我认真倾听算法工程师、软件工程师与 UI 设计师的意见，并调整方向以保证按时交付。</p>
+            <img src="/images/image_mosaic.png" alt="Mosaic" className="max-w-full max-h-[420px] object-contain rounded-md shadow-md mx-auto block" />
+          </div>
+        ),
+      },
+    ],
+  },
+  {
+    tag: "后期处理",
+    sections: [
+      {
+        title: "跨夜无缝叠加",
+        text: "引入跨夜叠加，允许用户在不同观测会话中累积曝光，从而在不依赖一次长时间拍摄的情况下提升最终图像质量。",
+        image: "/images/image1.3.png",
+      },
+      {
+        title: "灵活的水印系统",
+        text: "设计了一个集成在后处理流水线中的本地渲染水印系统，支持灵活个性化与未来扩展。",
+        image: "/images/image1.2.png",
+      },
+    ],
+  },
+  {
+    tag: "赤道仪对准",
+    sections: [
+      {
+        title: "设置赤道仪模式的直观设计",
+        text: "我们用 3D 动画引导替代了原有平面静态视觉，清晰展示需要旋转的部件和操作方式，大幅提升成功率。",
+        video: "/images/EQ.mp4",
+      },
+    ],
+  },
+  {
+    tag: "DWARF mini",
+    sections: [
+      {
+        title: "定义 DWARF mini 的体验",
+        text: "作为产品负责人之一，我参与了这款小型便携产品的产品定义与体验设计，聚焦便携性、亲和力与成本效率。我们有意去除高端配置，引入更适合初学者的特性，同时强调耐用性与可靠性，打造世界上最小的智能望远镜。",
+        image: "/images/image_mini_0.png",
+      },
+      {
+        text: "我们引入了 360° 旋转自由，消除了跟踪盲区并移除了由用户放置引起的限制。",
+        image: "/images/image_mini_1.png",
+      },
+      {
+        text: "集成内置暗帧滤镜，自动切换并拍摄暗帧，让复杂概念在日常使用中变得无感且轻松。",
+        image: "/images/image_mini_2.png",
+      },
+    ],
+  },
+  {
+    tag: "更多",
+    sections: [
+      {
+        custom: (
+          <div>
+            <h4 className="text-2xl font-semibold mb-4 mt-10" style={{ color: "#000000" }}>想一起合作？聊聊吧。</h4>
+            <p className="text-base leading-relaxed text-slate-800 mt-3">欢迎通过 <a href="https://www.linkedin.com/in/elliot-luo-7181ab254/" target="_blank" rel="noreferrer" className="font-bold no-underline inline-flex items-center gap-1 group">LinkedIn</a> 联系我。</p>
+            <p className="text-base leading-relaxed text-slate-800 mt-3">或者发邮件至 <a href="mailto:haoluo2000@gmail.com" className="font-bold no-underline">haoluo2000@gmail.com</a></p>
+          </div>
+        ),
+      },
+    ],
+  },
+];
+
 import { motion, AnimatePresence } from "framer-motion";
 
 /* -----------------------------
@@ -307,8 +420,16 @@ const FEATURES: Feature[] = [
 
 export default function DwarfMiniPage() {
   const [selected, setSelected] = useState(0);
+  const [lang, setLang] = useState<'en' | 'zh'>(() => {
+    try {
+      return localStorage.getItem('lang') === 'zh' ? 'zh' : 'en';
+    } catch (e) {
+      return 'en';
+    }
+  });
 
-  const current = FEATURES[selected];
+  const currentFeatures = lang === 'zh' ? FEATURES_ZH : FEATURES;
+  const current = currentFeatures[selected];
 
 
   const goNext = () => {
@@ -338,7 +459,7 @@ export default function DwarfMiniPage() {
         }}
       >
         <h1 className="text-3xl md:text-4xl text-white">
-          Product manager at DWARFLAB
+          {lang === 'zh' ? 'DWARFLAB 的产品经理' : 'Product manager at DWARFLAB'}
         </h1>
       </header>
 
@@ -349,8 +470,8 @@ export default function DwarfMiniPage() {
       >
         <div className="mx-auto w-[92vw] max-w-5xl">
           {/* Tags */}
-          <div className="flex flex-wrap gap-3 mb-10">
-            {FEATURES.map((item, idx) => {
+          <div className="flex flex-wrap gap-3 mb-10 justify-center">
+            {currentFeatures.map((item, idx) => {
               const isSelected = idx === selected;
 
               return (
@@ -442,11 +563,11 @@ export default function DwarfMiniPage() {
             </AnimatePresence>
 
             {/* Next button */}
-            {selected < FEATURES.length - 1 && (
+            {selected < currentFeatures.length - 1 && (
               <div className="mt-14 flex justify-end">
                 <button
                   onClick={goNext}
-                  aria-label="Next"
+                  aria-label={lang === 'zh' ? '下一步' : 'Next'}
                   className="
                     px-4 py-2
                     rounded-full
@@ -459,7 +580,7 @@ export default function DwarfMiniPage() {
                     focus:outline-none
                   "
                 >
-                  Next
+                  {lang === 'zh' ? '下一步' : 'Next'}
                 </button>
               </div>
             )}
