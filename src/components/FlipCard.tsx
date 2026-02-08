@@ -21,16 +21,6 @@ const FlipCard = forwardRef<HTMLButtonElement, Props>(function FlipCard(
   const [internal, setInternal] = useState(false);
   const buttonRef = React.useRef<HTMLButtonElement | null>(null);
 
-  // expose imperative API to parent
-  React.useImperativeHandle(ref, () => ({
-    // attach el to forwarded ref for compatibility
-    // consumer likely won't use forwarded ref directly when using domApiRef
-    // but we keep it for completeness
-    get el() {
-      return buttonRef.current as any;
-    }
-  }), []);
-
   // provide domApiRef callback with methods
   useEffect(() => {
     const api = {
@@ -60,7 +50,12 @@ const FlipCard = forwardRef<HTMLButtonElement, Props>(function FlipCard(
 
   return (
     <button
-      ref={(el) => (buttonRef.current = el) as any}
+      ref={(el) => {
+        buttonRef.current = el as HTMLButtonElement | null;
+        // also write through to forwarded ref
+        if (typeof ref === 'function') ref(el);
+        else if (ref && typeof ref === 'object') (ref as any).current = el;
+      }}
       type="button"
       aria-pressed={shown}
       onClick={handleClick}
