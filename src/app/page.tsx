@@ -20,13 +20,14 @@ const SoftNebulaBackground = dynamic(
 
 
 export default function HomePage() {
-  const [lang, setLang] = useState<'en' | 'zh'>(() => {
+  // avoid reading localStorage during render to prevent hydration mismatch
+  const [lang, setLang] = useState<'en' | 'zh'>('en');
+  useEffect(() => {
     try {
-      return (localStorage.getItem('lang') === 'zh' ? 'zh' : 'en');
-    } catch (e) {
-      return 'en';
-    }
-  });
+      const stored = localStorage.getItem('lang');
+      if (stored === 'zh') setLang('zh');
+    } catch (e) {}
+  }, []);
 
   useEffect(() => {
     try {
@@ -62,6 +63,76 @@ export default function HomePage() {
       skillsPara3: '协作重要，细节重要，用户友好的体验始终是目标。'
     }
   }[lang];
+
+  // Auto-flip coordination for the three FlipCards in the skills section
+  const cardRefs = React.useRef<Array<any>>([]);
+  const autoRunningRef = React.useRef(false);
+  const userInterruptedRef = React.useRef(false);
+
+  function isFirstCardCentered(): boolean {
+    const api = cardRefs.current[0];
+    const el = api?.el;
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    const center = (rect.top + rect.bottom) / 2;
+    const viewportCenter = window.innerHeight / 2;
+    return Math.abs(center - viewportCenter) < 40; // 40px tolerance
+  }
+
+  React.useEffect(() => {
+    let mounted = true;
+
+    async function runSequence() {
+      if (!mounted) return;
+      autoRunningRef.current = true;
+      userInterruptedRef.current = false;
+
+      const perFlipDelay = 700; // ms (animation 600ms + small gap)
+
+      // Check center once at start; proceed to flip all three unless interrupted
+      if (!isFirstCardCentered()) {
+        autoRunningRef.current = false;
+        return;
+      }
+
+      for (let i = 0; i < 3; i++) {
+        if (!mounted) break;
+        if (userInterruptedRef.current) break;
+
+        const api = cardRefs.current[i];
+        if (!api) continue;
+        // only flip if it's currently not flipped
+        try {
+          if (!api.isFlipped()) api.flip(true); // suppress callback so this isn't treated as user interaction
+        } catch (e) {}
+
+        // wait for flip animation to finish or for interruption
+        await new Promise((res) => setTimeout(res, perFlipDelay));
+      }
+
+      autoRunningRef.current = false;
+    }
+
+    function checkAndMaybeStart() {
+      // only start if not running and all are currently back
+      if (autoRunningRef.current) return;
+      const anyFlipped = cardRefs.current.some((api: any) => api?.isFlipped && api.isFlipped());
+      if (anyFlipped) return;
+      if (isFirstCardCentered()) {
+        runSequence();
+      }
+    }
+
+    checkAndMaybeStart();
+    window.addEventListener("scroll", checkAndMaybeStart, { passive: true });
+    window.addEventListener("resize", checkAndMaybeStart);
+
+    return () => {
+      mounted = false;
+      window.removeEventListener("scroll", checkAndMaybeStart);
+      window.removeEventListener("resize", checkAndMaybeStart);
+    };
+  }, []);
 
   return (
     <main className="relative min-h-screen">
@@ -218,28 +289,31 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-16">
-  <FlipCard
-    frontSrc="/images/AI.png"
-    backSrc="/images/Back1.png"
-    alt="AI"
-    
-  />
+                  <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-16">
+          <FlipCard
+            domApiRef={(api) => (cardRefs.current[0] = api)}
+            frontSrc="/images/AI.png"
+            backSrc="/images/Back1.png"
+            alt="AI"
+            onToggle={(next) => { if (autoRunningRef.current) userInterruptedRef.current = true; }}
+          />
 
-  <FlipCard
-    frontSrc="/images/Design.png"
-    backSrc="/images/Back2.png"
-    alt="Design"
-    
-  />
+          <FlipCard
+            domApiRef={(api) => (cardRefs.current[1] = api)}
+            frontSrc="/images/Design.png"
+            backSrc="/images/Back2.png"
+            alt="Design"
+            onToggle={(next) => { if (autoRunningRef.current) userInterruptedRef.current = true; }}
+          />
 
-  <FlipCard
-    frontSrc="/images/Coding.png"
-    backSrc="/images/Back3.png"
-    alt="Coding"
-    
-  />
-</div>
+          <FlipCard
+            domApiRef={(api) => (cardRefs.current[2] = api)}
+            frontSrc="/images/Coding.png"
+            backSrc="/images/Back3.png"
+            alt="Coding"
+            onToggle={(next) => { if (autoRunningRef.current) userInterruptedRef.current = true; }}
+          />
+        </div>
 
 
 
