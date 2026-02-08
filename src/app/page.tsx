@@ -5,6 +5,9 @@ import Background from "@/components/background";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
+import SketchCard from "@/components/SketchCard";
+
+
 {/*const AnimatedSvgBackground = dynamic(() => import("@/components/AnimatedSvgBackground"), { ssr: false });  */}
 const StickyName = dynamic(() => import("@/components/StickyName"), { ssr: false });
 const GoToTop = dynamic(() => import("@/components/GoToTop"), { ssr: false });
@@ -211,7 +214,7 @@ export default function HomePage() {
       {t.experienceTitle}
     </h2>
 
-    <div className="space-y-8">
+    <div className="space-y-10">
 
       {/* Experience 1 */}
       <ExperienceCard
@@ -259,13 +262,6 @@ export default function HomePage() {
     </div>
   </div>
 </section>
-
-
-
-
-
-
-
 
 
 

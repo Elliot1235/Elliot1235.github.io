@@ -46,3 +46,46 @@ body {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.paper-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg"),
+  radial-gradient(rgba(0,0,0,0.03), transparent);
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+}
+
+
+
+
+.sketch-card {
+  transition: transform 0.35s ease;
+}
+
+.sketch-card:hover {
+  transform: rotateZ(0.4deg) translateY(-2px);
+}
+
+.sketch-tilt {
+  transition: transform 0.25s ease;
+}
+
+.sketch-tilt:hover {
+  transform: rotate(-0.4deg) scale(1.01);
+}
